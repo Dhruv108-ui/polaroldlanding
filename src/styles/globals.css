@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@300;400;500;600;700;800&family=Yanone+Kaffeesatz:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,4 +21,18 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+.gradient {
+  font-weight: bold;
+  background: linear-gradient(270deg, #211AEB 0%, #7C36FE 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button{
+  border-radius: 8px;
+background: var(--Linear, linear-gradient(270deg, #211AEB 0%, #7C36FE 100%));
+}
+*{
+  font-family: "Plus Jakarta Sans"; 
 }
