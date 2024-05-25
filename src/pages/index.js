@@ -3,6 +3,37 @@ import React from 'react';
 import { Button, Card, Stack, CardContent, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 import ContactModal from '@/components/Modal';
+
+const services = [
+  {
+    icon: "Icons/mail.png",
+    title: 'Find the Right Leads:',
+    description: 'Priya identifies and targets high-quality leads on WhatsApp and LinkedIn.',
+  },
+  {
+    icon: "Icons/send.png",
+    title: 'Reach Out Automatically:',
+    description: 'Priya sends personalized messages on WhatsApp and LinkedIn, saving you time.',
+  },
+  {
+    icon: "Icons/ai.png",
+    title: 'Nurture with AI:',
+    description: 'Priya engages and nurtures your leads with smart, ongoing conversations.',
+  },
+  {
+    icon: "Icons/call.png",
+    title: 'Book Qualified Calls:',
+    description: 'Schedule calls only with pre-qualified leads, ensuring you focus on the best prospects.',
+  },
+];
+
+const ServiceCard = ({ icon, title, description, showBorder }) => (
+  <div className={`flex flex-col items-start p-6 mt-5  ${showBorder ? 'border-b sm:border-b-0 sm:border-r border-gray-300' : ''}`}>
+    <img src={icon} className="h-[45px] w-[45px] sm:h-[60px] sm:w-[60px] text-left" />
+    <h3 className="mt-4 text-[#220964] font-semibold text-[22px] sm:text-[25px] text-left">{title}</h3>
+    <p className="mt-2  text-[#220964] text-[14px] sm:text-[18px] text-left">{description}</p>
+  </div>
+);
 function App() {
   const [open, setOpen] = useState(false);
 
@@ -12,15 +43,15 @@ function App() {
     <>
       <ContactModal open={open} handleClose={handleCloseModal} />
       <div className="bg-white text-black">
-      <Box component="img" src="Landingpage/bg.png" alt="AI Agent" className="w-full" sx={{position:"absolute",height:"90svh",zIndex:"0"}} />
-        <Box className="bg-white text-black py-16 px-5 sm:px-24 mt-12 h-[90vh]">
+        <Box component="img" src="Landingpage/bg.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: "72svh", zIndex: "0" }} />
+        <Box className="bg-white text-black py-4 sm:py-5 px-5 sm:px-24 mt-0 sm:mt-12 h-[72vh]">
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="center">
             <Box flex={1}>
               <Typography variant="h3" className="gradient text-[24px] sm:text-[48px] relative z-10">
                 Capture & Convert
               </Typography>
               <Typography variant="h3" className="font-bold text-[#18181B] text-[24px] sm:text-[48px] relative z-10">
-                leads on Whatsapp &<br/> Linkedin Seamlessly
+                leads on Whatsapp &<br /> Linkedin Seamlessly
               </Typography>
               <Typography variant="subtitle1" className="mt-4 text-[14px] sm:text-[20px] relative z-10">
                 <span className="font-bold">Polarr</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
@@ -30,114 +61,100 @@ function App() {
               </Button>
             </Box>
             <Box flex={1} display="flex" justifyContent="center ">
-              <Box component="img" src="Landingpage/ai.png" alt="AI Agent" className="w-full max-w-md rounded-lg shadow-lg relative z-10" />
+              <Box component="img" src="Landingpage/ai.png" alt="AI Agent" className="w-[80%] sm:w-full max-w-md rounded-lg shadow-lg relative z-10" />
             </Box>
           </Stack>
         </Box>
-        <Box className="bg-gradient-to-br bg-white py-16 text-center px-5 sm:px-24">
-          <Stack spacing={4} alignItems="center" sx={{backgroundImage:'url(Landingpage/gradient.png)',padding:{md:"40px"},borderRadius:"15px"}}>
-            <Typography variant="h4" className="w-[60%] text-[24px] sm:text-[48px]">
+        <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16  text-center px-5 sm:px-24">
+          <Stack spacing={4} alignItems="center" className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{  padding: {xs:"30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
+            <Typography variant="h4" className=" sm:w-[60%] text-[24px] sm:text-[48px] font-[500]">
               Are you a <span className="gradient">Loan Agent</span>, Financial Advisor, Insurance Agent, or Mutual Fund Distributor?
             </Typography>
             <Typography variant="subtitle1" className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]">
               <span className="gradient">Meet PRIYA</span>, your dedicated AI Sales Agent designed to revolutionize how you connect with potential clients. <span className="gradient">PRIYA</span> empowers you to create personalized agents that generate, and nurture leads on WhatsApp and LinkedIn, ensuring you never miss an opportunity in the financial services sector.
             </Typography>
-            <Button variant="contained" className="mt-6 button">
+            <Button variant="contained" className="mt-6 button" onClick={handleOpenModal}>
               Join the Waitlist Now!
             </Button>
           </Stack>
         </Box>
-        <Box className="bg-gray-50 p-8 rounded-md  mx-auto text-center">
-          <Typography variant="h4" className="font-bold mb-6">
-            Why <span className="text-purple-600">Priya</span> Outperforms?
+        <Box className=" p-8 rounded-md  mx-auto text-center">
+
+          <Typography variant="h4" className="font-[500] mb-12 text-[24px] sm:text-[48px]">
+            Why <span className="gradient">Priya</span> Outperforms?
           </Typography>
           <Box flex={1} display="flex" justifyContent="center">
-            <Box component="img" src="Landingpage/feature.png" alt="AI Agent" className="w-full max-w-4xl rounded-lg shadow-lg" />
+            <Box component="img" src="Landingpage/feature.png" alt="AI Agent" className="w-[110%] sm:w-full max-w-4xl mt-4" />
           </Box>
         </Box>
 
-        <section className="bg-white py-16">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12">
-              What Does <span className="text-purple-600">Priya</span> Actually Do?
+        <section className="bg-white py-10 sm:py-16 mt-5 px-5 sm:px-24">
+          <Stack className="mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{  padding: {xs:"30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
+            <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px] font-[500]">
+              What Does <span className="gradient">Priya</span> Actually Do?
             </h2>
-            <div className="flex flex-wrap justify-center items-center space-x-4">
-              <div className="max-w-xs bg-white shadow-lg rounded-lg p-6 m-4">
-                <div className="text-purple-600 mb-4">
-                  {/* Replace with an appropriate icon */}
-                  <svg className="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 6.627 5.372 12 12 12 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-15h2v6h-2zm1 9c-.553 0-1 .448-1 1s.447 1 1 1 1-.448 1-1-.447-1-1-1z" /></svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Find the Right Leads:</h3>
-                <p>Priya identifies and targets high-quality leads on WhatsApp and LinkedIn.</p>
-              </div>
-
-              <div className="max-w-xs bg-white shadow-lg rounded-lg p-6 m-4">
-                <div className="text-purple-600 mb-4">
-                  {/* Replace with an appropriate icon */}
-                  <svg className="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 6.627 5.372 12 12 12 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-15h2v6h-2zm1 9c-.553 0-1 .448-1 1s.447 1 1 1 1-.448 1-1-.447-1-1-1z" /></svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Reach Out Automatically:</h3>
-                <p>Priya sends personalized messages on WhatsApp and LinkedIn, saving you time.</p>
-              </div>
-
-              <div className="max-w-xs bg-white shadow-lg rounded-lg p-6 m-4">
-                <div className="text-purple-600 mb-4">
-                  {/* Replace with an appropriate icon */}
-                  <svg className="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 6.627 5.372 12 12 12 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-15h2v6h-2zm1 9c-.553 0-1 .448-1 1s.447 1 1 1 1-.448 1-1-.447-1-1-1z" /></svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Nurture with AI:</h3>
-                <p>Priya engages and nurtures your leads with smart, ongoing conversations.</p>
-              </div>
-
-              <div className="max-w-xs bg-white shadow-lg rounded-lg p-6 m-4">
-                <div className="text-purple-600 mb-4">
-                  {/* Replace with an appropriate icon */}
-                  <svg className="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 6.627 5.372 12 12 12 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-15h2v6h-2zm1 9c-.553 0-1 .448-1 1s.447 1 1 1 1-.448 1-1-.447-1-1-1z" /></svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Book Qualified Calls:</h3>
-                <p>Schedule calls only with pre-qualified leads, ensuring you focus on the best prospects.</p>
+            <div className="container mx-auto px-6">
+              <div className="grid grid-cols-1 sm:gap-8 md:grid-cols-2 lg:grid-cols-4 sm:px-12 py-5">
+                {services.map((service, index) => (
+                  <ServiceCard
+                    key={index}
+                    icon={service.icon}
+                    title={service.title}
+                    description={service.description}
+                    showBorder={index !== services.length - 1}
+                  />
+                ))}
               </div>
             </div>
-          </div>
+          </Stack>
         </section>
-        <section className="py-16 text-center">
-          <Typography variant="h4" className="font-bold">
-            Don't Believe Us? Try talking to Priya Yourself!
+        <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
+          <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"50svh",sm:"70svh"}, width: "fit-content", zIndex: "0" }} />
+          <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
+            Don't Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Priya Yourself!</span>
           </Typography>
-          <Button variant="contained" color="success" className="mt-4">
-            WhatsApp
-          </Button>
-        </section>
-        <section className="py-16 bg-gray-100 text-center">
-          <Typography variant="h4" className="font-bold">
-            3 Major Case Studies
-          </Typography>
-          <Box className="mt-8 flex flex-wrap justify-center">
-            {[
-              { title: 'Midson Advisors', description: 'Transformation with Polar AI.' },
-              { title: 'Investales', description: 'Transformation with Polar AI.' },
-              { title: 'LexComply', description: 'Efficiency Boost with Polar AI.' }
-            ].map((item, index) => (
-              <Card key={index} className="m-4 w-64">
-                <CardContent>
-                  <Typography variant="h6" className="font-bold">
-                    {item.title}
-                  </Typography>
-                  <p>{item.description}</p>
-                  <Button variant="outlined" color="primary" className="mt-4">
-                    Read More
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <Box flex={1} display="flex" justifyContent="center " onClick={handleOpenModal}>
+            <Box component="img" src="Icons/wp.png" alt="AI Agent" className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer" />
           </Box>
         </section>
-        <footer className="py-8 bg-black text-white text-center">
-          <p className="mb-4">Want Priya to Take Over?</p>
-          <Button variant="contained" color="primary">
+        <section className="bg-white  py-10 sm:py-16 mt-5 px-5 sm:px-24">
+          <Stack className="container mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: {xs:"30px 0px", md: "60px 0px" }, borderRadius: "15px" }}>
+            <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px]  text-[#391383] font-bold">
+              3 Major Case Studies
+            </h2>
+
+            <Box className="mt-8 flex flex-wrap justify-around px-4">
+              {[
+                { image: 'Landingpage/blog.png', title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
+                { image: 'Landingpage/blog.png', title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
+                { image: 'Landingpage/blog.png', title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
+              ].map((item, index) => (
+                <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
+                  <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
+                    <img src={item.image} className="max-h-[175px] w-full text-left mb-2" style={{ objectFit: "cover", borderRadius: "8px" }} />
+                    <Typography variant="h6" className="font-semibold text-left text-[18px] sm:text-[22px]">
+                      {item.title}
+                    </Typography>
+                    <p className='text-left text-[14px]'>{item.description}</p>
+                    <Button className="mt-4 gradient text-left items-start text-[14px] sm:text-[18px]" sx={{ textTransform: "none" }}>
+                      Read More
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
+          </Stack>
+        </section>
+
+        <Stack sx={{ justifyContent: "center", alignItems: "center", mb:{xs:"130px",sm:"200px"} }}>
+          <Box component="img" src="Landingpage/bg2.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"30svh",sm:"40svh"}, zIndex: "0", mt:{xs:"30px",sm:"100px"} }} />
+          <h2 className="text-3xl mb-5 text-[24px] sm:text-[48px] font-[600] relative z-1 mt-[30px] sm:mt-[100px]">
+            Want <span className="gradient">Priya </span>to Take Over?
+          </h2>
+          <h2 className="text-3xl mb-12 text-[20px] sm:text-[35px] font-[600] relative z-1">
             Join the Waitlist Today!
-          </Button>
-        </footer>
+          </h2>
+        </Stack>
       </div>
     </>
   );

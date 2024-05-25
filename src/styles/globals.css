@@ -32,6 +32,8 @@
 .button{
   border-radius: 8px;
 background: var(--Linear, linear-gradient(270deg, #211AEB 0%, #7C36FE 100%));
+padding: 10px 30px;
+text-transform: inherit;
 }
 *{
   font-family: "Plus Jakarta Sans"; 

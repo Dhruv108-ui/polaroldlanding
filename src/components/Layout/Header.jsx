@@ -8,7 +8,7 @@ import Image from "next/image";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({openContact}) => {
     const [anchorEl, setAnchorEl] = useState(false);
     return ( 
         <>
@@ -25,7 +25,7 @@ const Header = () => {
                                 <Button color="inherit" className="rounded-lg text-white py-2 px-9 text-base normal-case" sx={{
                                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                                     background: 'linear-gradient(to right, #211AEB, #7C36FE)',
-                                }}>Join The Waitlist</Button>
+                                }} onClick={openContact}>Join The Waitlist</Button>
                             </Box>
                             <IconButton
                                 size="large"
