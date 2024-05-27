@@ -183,12 +183,12 @@ function BlogPost({slug}) {
         <div className="w-full border border-gray-400 mt-8"></div>
         <div className="comment-section mt-12 mb-8 px-5">
             <h1 className='text-4xl'>Comments</h1>
-            <div className="post-comment flex mt-4 items-center w-5/6 p-6 shadow-lg rounded-md flex-wrap flex-grow">
+            <div className="post-comment flex mt-4 items-center w-5/6 p-6 shadow-lg rounded-md md:flex-nowrap sm:flex-wrap xs:flex-wrap flex-grow">
                 <div className="flex items-center">
                     <img className='w-12 rounded-full' src="https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg" alt="" />
                     <div className="title ml-4 text-lg">Tanishq Soni</div>
                 </div>  
-                <div className="flex md:ml-8 w-10/12 justify-around sm:mt-2 sm:ml-16 xs:mt-2 xs:ml-16">
+                <div className="flex md:ml-6 w-10/12 justify-around sm:mt-2 sm:ml-16 xs:mt-2 xs:ml-16">
                     <input className='bg-gray-200 py-4 px-4 rounded-md w-full' type="text" placeholder='Add a comment...' />
                     <button className='btn bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-10 rounded-md ml-2 text-lg'>Post</button>
                 </div>
