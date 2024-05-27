@@ -229,7 +229,7 @@ function BlogPost({slug}) {
                         </div>
                     </div>
                     {index===replyOpenState.index && replyOpenState.state && comment.repliesData.length>0 && comment.repliesData.map((reply) => (
-                        <div className="reply flex flex-col items-end w-5/6 ">
+                        <div className="reply flex flex-col items-end w-5/6 " key={reply.id}>
                             <div className="w-5/6 flex">
                                 <div className="w-1/12 border-l-2 p-10"></div>
                                 <div className="w-11/12 shadow-lg p-10 mt-5">
@@ -265,6 +265,7 @@ function BlogPost({slug}) {
         <div className="flex mt-2 flex-wrap justify-between">
         {blogs && blogs.map((blog) => (
             <BlogContainer
+                key={blog.id}
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}

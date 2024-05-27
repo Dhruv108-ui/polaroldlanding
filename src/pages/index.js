@@ -111,7 +111,7 @@ function App() {
         <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
           <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"50svh",sm:"70svh"}, width: "fit-content", zIndex: "0" }} />
           <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
-            Don't Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Priya Yourself!</span>
+            Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Priya Yourself!</span>
           </Typography>
           <Box flex={1} display="flex" justifyContent="center " onClick={handleOpenModal}>
             <Box component="img" src="Icons/wp.png" alt="AI Agent" className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer" />
@@ -131,7 +131,7 @@ function App() {
               ].map((item, index) => (
                 <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
                   <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
-                    <img src={item.image} className="max-h-[175px] w-full text-left mb-2" style={{ objectFit: "cover", borderRadius: "8px" }} />
+                    <img src={item.image} alt="blog banner" className="max-h-[175px] w-full text-left mb-2" style={{ objectFit: "cover", borderRadius: "8px" }} />
                     <Typography variant="h6" className="font-semibold text-left text-[18px] sm:text-[22px]">
                       {item.title}
                     </Typography>

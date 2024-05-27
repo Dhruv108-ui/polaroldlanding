@@ -130,6 +130,7 @@ function Blog() {
       <div className="flex md:m-auto mt-12 flex-wrap md:w-5/6 sm:w-full justify-around sm:mx-0">
         {blogs && blogs.map((blog) => (
             <BlogContainer
+                key={blog.id}
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}
