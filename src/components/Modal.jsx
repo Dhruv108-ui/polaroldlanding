@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Box, TextField, Button, Stack, IconButton, Snackbar, Alert } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { collection, addDoc,updateDoc } from 'firebase/firestore';
+import { database } from './firebase'; // Adjust the import path as needed
 
 const ContactModal = ({ open, handleClose }) => {
   const [formData, setFormData] = useState({
@@ -29,41 +31,34 @@ const ContactModal = ({ open, handleClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Combine country code with phone number
+
     const fullPhoneNumber = `${formData.countryCode} ${formData.phoneNumber}`;
-    
-    // Dummy API endpoint
-    const apiEndpoint = 'http://localhost:8000/api/v1/contact/add';
-    if(!formData.firstName || !formData.lastName || !formData.email || !formData.phoneNumber || !formData.message  )
-      {
-        setSnackbar({
-          open: true,
-          message: 'All fields are required !',
-          severity: 'error',
-        });
-        return
-      }
-      if(formData.phoneNumber.length != 10)
-        {
-          setSnackbar({
-            open: true,
-            message: 'Phone number should be of 10 digits !',
-            severity: 'error',
-          });
-          return
-        }
-      if( !formData.privacyPolicy)
-        {
-          setSnackbar({
-            open: true,
-            message: 'Please agree to our privacy policy !',
-            severity: 'error',
-          });
-          return   
-        }
-        
-    // Form data to be sent
+
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phoneNumber || !formData.message) {
+      setSnackbar({
+        open: true,
+        message: 'All fields are required!',
+        severity: 'error',
+      });
+      return;
+    }
+    if (formData.phoneNumber.length !== 10) {
+      setSnackbar({
+        open: true,
+        message: 'Phone number should be of 10 digits!',
+        severity: 'error',
+      });
+      return;
+    }
+    if (!formData.privacyPolicy) {
+      setSnackbar({
+        open: true,
+        message: 'Please agree to our privacy policy!',
+        severity: 'error',
+      });
+      return;
+    }
+
     const data = {
       fname: formData.firstName,
       lname: formData.lastName,
@@ -73,21 +68,11 @@ const ContactModal = ({ open, handleClose }) => {
     };
 
     try {
-      const response = await fetch(apiEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const result = await response.json();
-      console.log('Success:', result);
-      
+      // Save data to Firebase
+      const contactRef = await addDoc(collection(database, 'contact'), data);
+        
+        // Add the document ID to the blog data
+      await updateDoc(contactRef, { id: contactRef.id });
       // Clear form and close modal
       setFormData({
         firstName: '',
@@ -108,7 +93,7 @@ const ContactModal = ({ open, handleClose }) => {
       });
     } catch (error) {
       console.error('Error:', error);
-      
+
       // Show error snackbar
       setSnackbar({
         open: true,
