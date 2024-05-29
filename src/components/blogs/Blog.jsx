@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import SearchComponent from './blogNeeds/SearchComponent'
 import BlogContainer from './blogNeeds/BlogContainer'
 import LoadMoreBtn from './blogNeeds/LoadMoreBtn'
-import axios from 'axios'
 import { database } from '@/assets/db/config'
 import { getDocs, collection } from 'firebase/firestore';
 
