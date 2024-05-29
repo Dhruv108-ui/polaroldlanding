@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, {useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { ArrowBack, ArrowDownward, ArrowDownwardTwoTone, DoneOutlineTwoTone, KeyboardArrowUp, ThumbDown } from '@mui/icons-material'
 // import bullet
 import CircleIcon from '@mui/icons-material/Circle';
@@ -12,8 +12,58 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import BlogContainer from './blogNeeds/BlogContainer';
 import ReplyIcon from '@mui/icons-material/Reply';
 import CloseIcon from '@mui/icons-material/Close';
+import { database } from '@/assets/db/config'
+import { getDocs, collection } from 'firebase/firestore';
 
 function BlogPost({slug}) {
+    const [blog, setBlog] = useState({})
+    const [timeToRead, setTimeToRead] = useState(0)
+    
+    function timeToReadBlog(content){
+        const wordsPerMinute = 200;
+        const noOfWords = content.split(/\s/g).length;
+        return Math.ceil(noOfWords/wordsPerMinute)
+    }
+
+    useEffect(() => {
+        if(!slug) return
+        async function getBlogDetails(){
+            try{
+                const blogCollection = collection(database, 'blog');
+                const blogSnapshot = await getDocs(blogCollection);
+                const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const blogData = blogList.filter((blog) => blog.id === slug)
+                if(blogData){
+                    setBlog(blogData[0])
+                    setTimeToRead(timeToReadBlog(blogData[0].description))
+                }
+                else{
+                    console.log("No Blog Found")
+                }
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+
+        async function getRelatedBlogs(){
+            try{
+                // fetch out top 3 blogs matching the category of the current blog minus the current blog
+                const blogCollection = collection(database, 'blog');
+                const blogSnapshot = await getDocs(blogCollection);
+                const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const relatedBlogs = blogList.filter((particularBlog) => particularBlog.category === blog.category && blog.id !== slug)
+                setBlogs(relatedBlogs.slice(0, 3))
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+        
+        getBlogDetails()
+        getRelatedBlogs()
+    }, [slug])
+
     const [comments, setComments] = useState([
         {
             id: 1,
@@ -62,44 +112,7 @@ function BlogPost({slug}) {
         }
     ])
 
-    const [blogs, setBlogs] = useState([
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-    ])
+    const [blogs, setBlogs] = useState()
 
     const [like, setLike] = useState(false)
     const handleLike = () => {
@@ -153,14 +166,14 @@ function BlogPost({slug}) {
             </Link>
         </div>
         <h1 className='text-6xl md:w-4/6 sm:w-full xs:w-full mt-10'>
-            {slug}
+            {blog.title}
         </h1>
         <div className="border-y border-black w-full mt-10 flex px-8 py-8 justify-between">
             <div className="date flex items-center text-xl">
-                <span className="mr-2">March 16, 2023</span>
+                <span className="mr-2">{blog.createdAt}</span>
                 <CircleIcon sx={{fontSize: "0.5rem"}}/>
                 <span className="ml-2">
-                    10 min read
+                    {timeToRead} min read
                 </span>
             </div>
             <div className="social-icon flex">
@@ -170,18 +183,15 @@ function BlogPost({slug}) {
             </div>
         </div>
         <div className="banner mt-12">
-            <img className='w-full' src="https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png" alt="" />
+            <img className='w-full' src={blog.thumbnail} alt="" />
         </div>
         <div className="blog-content p-6 text-lg">
             <p className='mt-4'>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis labore et deleniti reiciendis illo facere amet, placeat culpa repudiandae debitis delectus aspernatur ab ex quos molestiae qui suscipit temporibus doloribus alias illum. Repudiandae, ullam! Sapiente nam sequi nulla officiis cumque, dignissimos fugit perferendis quae voluptate numquam consequuntur quia obcaecati quaerat.
-            </p>
-            <p className='mt-4'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aperiam error vel soluta, iure nobis in aliquid! Assumenda iste magni odit explicabo non voluptatem, laboriosam sunt dolore ratione quae laudantium ea in necessitatibus consequuntur eveniet doloribus sed eius repellendus? Consequatur quidem beatae sunt necessitatibus, consectetur suscipit quisquam ea excepturi maiores eum id recusandae minima provident exercitationem molestias earum itaque culpa! Doloribus fugiat dignissimos vitae minima nostrum qui sunt explicabo inventore suscipit praesentium quis temporibus fugit deleniti non vero, animi quae quas! Asperiores expedita minima sapiente. Accusamus odio corrupti consequatur similique perferendis, temporibus aspernatur, assumenda, voluptas beatae ab cupiditate ratione in.
+                {blog.description}
             </p>
         </div>
         <div className="w-full border border-gray-400 mt-8"></div>
-        <div className="comment-section mt-12 mb-8 px-5">
+        {/* <div className="comment-section mt-12 mb-8 px-5">
             <h1 className='text-4xl'>Comments</h1>
             <div className="post-comment flex mt-4 items-center w-5/6 p-6 shadow-lg rounded-md md:flex-nowrap sm:flex-wrap xs:flex-wrap flex-grow">
                 <div className="flex items-center">
@@ -255,23 +265,28 @@ function BlogPost({slug}) {
                     </>
                 ))}
             </div>
-        </div>
+        </div> */}
 
-        <div className="w-full border border-gray-400 mt-20"></div>
+        {/* <div className="w-full border border-gray-400 mt-20"></div> */}
         
         {/* Related Blogs */}
 
         <h1 className='text-4xl mt-12'>Related Blogs</h1>
-        <div className="flex mt-2 flex-wrap justify-between">
+        <div className="flex mt-2 flex-wrap justify-between mb-8">
         {blogs && blogs.map((blog) => (
             <BlogContainer
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}
-                img={blog.img}
-                authorDetails={blog.authorDetails}
+                img={blog.thumbnail}
+                authorDetails={{
+                    name: blog.authorName,
+                    date: blog.createdAt,
+                    img: blog.authorImage
+                }}
             />
         ))}
+        {blogs && blogs.length===0 && <h1 className='text-center w-full text-lg'>No Related Blogs Found</h1>}
       </div>
         
 

@@ -1,119 +1,25 @@
 import { Search } from '@mui/icons-material'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import SearchComponent from './blogNeeds/SearchComponent'
 import BlogContainer from './blogNeeds/BlogContainer'
 import LoadMoreBtn from './blogNeeds/LoadMoreBtn'
+import axios from 'axios'
+import { database } from '@/assets/db/config'
+import { getDocs, collection } from 'firebase/firestore';
 
 function Blog() {
-    const [blogs, setBlogs] = useState([
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },{
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-        {
-            id: 1,
-            title: 'UX review presentation',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.',
-            category: 'Design',
-            img: "https://assets-global.website-files.com/6482d3c81a3b206db8abe8ab/6482d3c81a3b206db8abe93b_Mastering%20Youtube%20Thumbnail%20in%202023-blog-header.png",
-            authorDetails : {
-                name: "John Doe",
-                date: "10 August 2021",
-                img: "https://headshots-inc.com/wp-content/uploads/2021/04/author-headshots.jpg"
-            }
-        },
-    ])
+    const [blogs, setBlogs] = useState([])
+
+    useEffect(() => {
+      async function fetchBlogs() {
+        const blogCollection = collection(database, 'blog');
+        const blogSnapshot = await getDocs(blogCollection);
+        const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setBlogs(blogList);
+      }
+      
+      fetchBlogs();
+  }, []);
 
   return (
     <>
@@ -130,11 +36,16 @@ function Blog() {
       <div className="flex md:m-auto mt-12 flex-wrap md:w-5/6 sm:w-full justify-around sm:mx-0">
         {blogs && blogs.map((blog) => (
             <BlogContainer
+                id={blog.id}
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}
-                img={blog.img}
-                authorDetails={blog.authorDetails}
+                img={blog.thumbnail}
+                authorDetails={{
+                    name: blog.authorName,
+                    date: blog.createdAt,
+                    img: blog.authorImage
+                }}
             />
         ))}
       </div>
