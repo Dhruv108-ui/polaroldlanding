@@ -36,6 +36,7 @@ function BlogPost({slug}) {
                 if(blogData){
                     setBlog(blogData[0])
                     setTimeToRead(timeToReadBlog(blogData[0].description))
+                    document.getElementById('blog_description').innerHTML = blogData[0].description
                 }
                 else{
                     console.log("No Blog Found")
@@ -72,6 +73,7 @@ function BlogPost({slug}) {
         
         getBlogDetails()
         getRelatedBlogs()
+
     }, [slug])
 
     const [comments, setComments] = useState([
@@ -195,11 +197,7 @@ function BlogPost({slug}) {
         <div className="banner mt-12">
             <img className='w-full' src={blog.thumbnail} alt="" />
         </div>
-        <div className="blog-content p-6 text-lg">
-        {blog.description && (
-                <p className='mt-4' dangerouslySetInnerHTML={{ __html: blog.description }} />
-            )}
-        </div>
+        <div className="blog-content p-6 text-lg" id='blog_description'/>
         <div className="w-full border border-gray-400 mt-8"></div>
         {/* <div className="comment-section mt-12 mb-8 px-5">
             <h1 className='text-4xl'>Comments</h1>
