@@ -19,7 +19,11 @@ function BlogContainer({id,title,description,category,img,authorDetails}) {
                     <h5 className="text-gray-900 font-semibold text-2xl mb-2">{title}</h5>
                     <ArrowOutwardIcon/>
                 </Link>
-                <p className="font-normal text-gray-700 mb-3">{description}... <Link className='text-theme font-semibold' href={`/blog/${id}`}>Read more</Link></p>
+                {description && (
+                <p className='mt-4 font-normal text-gray-700 mb-3' dangerouslySetInnerHTML={{ __html: description }}></p>)}
+                {/* <p className="font-normal text-gray-700 mb-3">{description}... 
+                    <Link className='text-theme font-semibold' href={`/blog/${id}`}>Read more</Link>
+                </p> */}
                 <div className="flex mt-8 items-center">
                     <div className="w-12 h-12 overflow-hidden rounded-full p-1">
                         <img className='w-full h-full object-cover rounded-full' src={authorDetails.img} alt="" />
