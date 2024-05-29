@@ -36,6 +36,7 @@ function Blog() {
         {blogs && blogs.map((blog) => (
             <BlogContainer
                 key={blog.id}
+                id={blog.id}
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}
