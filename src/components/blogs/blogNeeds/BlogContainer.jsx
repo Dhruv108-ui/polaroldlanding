@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import Link from 'next/link';
 
-function BlogContainer({title,description,category,img,authorDetails}) {
+function BlogContainer({id,title,description,category,img,authorDetails}) {
   return (
     <div className="mt-4">
     <div className="bg-white shadow-lg rounded-lg max-w-sm mb-5 p-6">
@@ -13,7 +13,7 @@ function BlogContainer({title,description,category,img,authorDetails}) {
             <a href="#" className=''>
                 <span className="text-purple-700 font-medium normal-case">{category}</span>
             </a>
-            <Link href={`/blog/${title}`} className='flex justify-between'>
+            <Link href={`/blog/${id}`} className='flex justify-between'>
                 <h5 className="text-gray-900 font-semibold text-2xl mb-2">{title}</h5>
                 <ArrowOutwardIcon/>
             </Link>
