@@ -48,12 +48,20 @@ function BlogPost({slug}) {
 
         async function getRelatedBlogs(){
             try{
-                // fetch out top 3 blogs matching the category of the current blog minus the current blog
+                // fetch out top 3 blogs matching the category of the current blog minus the current blog, if length is less than 3 then fetch the remaining blogs
                 const blogCollection = collection(database, 'blog');
                 const blogSnapshot = await getDocs(blogCollection);
                 const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                const relatedBlogs = blogList.filter((particularBlog) => particularBlog.category === blog.category && blog.id !== slug)
-                setBlogs(relatedBlogs.slice(0, 3))
+                const relatedBlogs = blogList.filter((blog) => blog.category === blog.category && blog.id !== slug)
+                blogList.forEach(blog => {
+                    blog.description = blog.description.substring(0, 100);
+                });
+                if(relatedBlogs.length>3){
+                    setBlogs(relatedBlogs.slice(0, 3))
+                }
+                else{
+                    setBlogs(relatedBlogs)
+                }
             }
             catch(err){
                 console.log(err)
@@ -176,11 +184,11 @@ function BlogPost({slug}) {
                     {timeToRead} min read
                 </span>
             </div>
-            <div className="social-icon flex">
+            {/* <div className="social-icon flex">
                 <XIcon className='mx-2' sx={{fontSize: "2rem"}}/>
                 <ContentCopyIcon className='mx-2' sx={{fontSize: "2rem"}}/>
                 <Image className='mx-2' src={facebookSvg.src} alt="facebook" width={32} height={32}/>
-            </div>
+            </div> */}
         </div>
         <div className="banner mt-12">
             <img className='w-full' src={blog.thumbnail} alt="" />
@@ -276,6 +284,7 @@ function BlogPost({slug}) {
         {blogs && blogs.map((blog) => (
             <BlogContainer
                 key={blog.id}
+                id={blog.id}
                 title={blog.title}
                 description={blog.description}
                 category={blog.category}
