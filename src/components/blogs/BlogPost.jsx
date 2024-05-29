@@ -55,6 +55,8 @@ function BlogPost({slug}) {
                 const relatedBlogs = blogList.filter((blog) => blog.category === blog.category && blog.id !== slug)
                 blogList.forEach(blog => {
                     blog.description = blog.description.substring(0, 100);
+                    // add link with link name read more
+                    blog.description = blog.description + `<a href='/blog/${blog.id}'>Read More</a>`
                 });
                 if(relatedBlogs.length>3){
                     setBlogs(relatedBlogs.slice(0, 3))
@@ -194,9 +196,9 @@ function BlogPost({slug}) {
             <img className='w-full' src={blog.thumbnail} alt="" />
         </div>
         <div className="blog-content p-6 text-lg">
-            <p className='mt-4'>
-                {blog.description}
-            </p>
+        {blog.description && (
+                <p className='mt-4' dangerouslySetInnerHTML={{ __html: blog.description }} />
+            )}
         </div>
         <div className="w-full border border-gray-400 mt-8"></div>
         {/* <div className="comment-section mt-12 mb-8 px-5">
@@ -286,7 +288,7 @@ function BlogPost({slug}) {
                 key={blog.id}
                 id={blog.id}
                 title={blog.title}
-                description={blog.description}
+                description={blog.description+ `...<a class="text-theme font-semibold" href='/blog/${blog.id}'>Read More</a>`}
                 category={blog.category}
                 img={blog.thumbnail}
                 authorDetails={{

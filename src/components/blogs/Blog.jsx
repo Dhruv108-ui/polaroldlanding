@@ -74,7 +74,7 @@ function Blog() {
                 key={blog.id}
                 id={blog.id}
                 title={blog.title}
-                description={blog.description}
+                description={blog.description+ `...<a class="text-theme font-semibold" href='/blog/${blog.id}'>Read More</a>`}
                 category={blog.category}
                 img={blog.thumbnail}
                 authorDetails={{
