@@ -15,7 +15,7 @@ const ContactModal = ({ open, handleClose }) => {
     otherRole: '',
     platform: '',
     goal: '',
-    privacyPolicy: false,
+    // privacyPolicy: false,
   });
 
   const [snackbar, setSnackbar] = useState({
@@ -54,14 +54,14 @@ const ContactModal = ({ open, handleClose }) => {
       });
       return;
     }
-    if (!formData.privacyPolicy) {
-      setSnackbar({
-        open: true,
-        message: 'Please agree to our privacy policy!',
-        severity: 'error',
-      });
-      return;
-    }
+    // if (!formData.privacyPolicy) {
+    //   setSnackbar({
+    //     open: true,
+    //     message: 'Please agree to our privacy policy!',
+    //     severity: 'error',
+    //   });
+    //   return;
+    // }
 
     const data = {
       name: formData.name,
@@ -253,7 +253,7 @@ const ContactModal = ({ open, handleClose }) => {
                   <MenuItem value="More closed deals">More closed deals</MenuItem>
                 </Select>
               </FormControl>
-              <div className="flex items-center mb-4">
+              {/* <div className="flex items-center mb-4">
                 <input
                   type="checkbox"
                   id="privacyPolicy"
@@ -265,7 +265,7 @@ const ContactModal = ({ open, handleClose }) => {
                 <label htmlFor="privacyPolicy" className="font-semibold">
                   You agree to our friendly <a href="/privacy-policy" className="text-[#344054]">privacy policy</a>.
                 </label>
-              </div>
+              </div> */}
               <Button
                 className="bg-black text-white w-full py-2 mt-2 hover:bg-black"
                 sx={{ textTransform: "none" }}
