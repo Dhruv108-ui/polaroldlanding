@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { Modal, Box, TextField, Button, Stack, IconButton, Snackbar, Alert } from '@mui/material';
+import { Modal, Box, TextField, Button, Stack, IconButton, Snackbar, Alert, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { collection, addDoc,updateDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { database } from './firebase'; // Adjust the import path as needed
 
 const ContactModal = ({ open, handleClose }) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phoneNumber: '',
-    message: '',
-    privacyPolicy: false,
     countryCode: 'IN +91',
+    company: '',
+    role: '',
+    otherRole: '',
+    platform: '',
+    goal: '',
+    privacyPolicy: false,
   });
 
   const [snackbar, setSnackbar] = useState({
@@ -33,8 +36,9 @@ const ContactModal = ({ open, handleClose }) => {
     e.preventDefault();
 
     const fullPhoneNumber = `${formData.countryCode} ${formData.phoneNumber}`;
+    const role = formData.role === 'Other' ? formData.otherRole : formData.role;
 
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phoneNumber || !formData.message) {
+    if (!formData.name || !formData.email || !formData.phoneNumber || !formData.company || !role || !formData.platform || !formData.goal) {
       setSnackbar({
         open: true,
         message: 'All fields are required!',
@@ -60,28 +64,34 @@ const ContactModal = ({ open, handleClose }) => {
     }
 
     const data = {
-      fname: formData.firstName,
-      lname: formData.lastName,
+      name: formData.name,
       email: formData.email,
       phoneNo: fullPhoneNumber,
-      message: formData.message,
+      company: formData.company,
+      role: role,
+      platform: formData.platform,
+      goal: formData.goal,
     };
 
     try {
       // Save data to Firebase
       const contactRef = await addDoc(collection(database, 'contact'), data);
         
-        // Add the document ID to the blog data
+      // Add the document ID to the blog data
       await updateDoc(contactRef, { id: contactRef.id });
+      
       // Clear form and close modal
       setFormData({
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
         phoneNumber: '',
-        message: '',
-        privacyPolicy: false,
         countryCode: 'IN +91',
+        company: '',
+        role: '',
+        otherRole: '',
+        platform: '',
+        goal: '',
+        privacyPolicy: false,
       });
       handleClose();
 
@@ -114,7 +124,7 @@ const ContactModal = ({ open, handleClose }) => {
         onClose={handleClose}
       >
         <Box className="fixed inset-0 flex items-center justify-center p-2 sm:p-4">
-          <Box className="bg-white rounded-lg shadow-lg w-full max-w-md p-4 sm:p-8 relative" onClick={(e) => e.stopPropagation()}>
+          <Box className="bg-white rounded-lg shadow-lg w-full max-w-lg p-4 sm:p-8 relative" onClick={(e) => e.stopPropagation()}>
             <IconButton
               className="absolute top-4 right-4"
               onClick={handleClose}
@@ -125,75 +135,124 @@ const ContactModal = ({ open, handleClose }) => {
             <h2 className="text-2xl font-semibold mb-4 text-center">Get in touch</h2>
             <p className="mb-6">We’d love to hear from you. Please fill out this form.</p>
             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <Stack className="flex gap-4 flex-row">
+              <Stack className='flex-row gap-2'>
                 <TextField
-                  className="mb-4 w-[50%]"
+                  className="mb-4 w-full"
                   fullWidth
-                  label="First name"
+                  label="Name"
                   variant="outlined"
                   required
-                  name="firstName"
-                  value={formData.firstName}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                 />
                 <TextField
-                  className="mb-4 w-[50%]"
+                  className="mb-4 w-full"
                   fullWidth
-                  label="Last name"
+                  label="E-mail ID"
+                  type="email"
                   variant="outlined"
                   required
-                  name="lastName"
-                  value={formData.lastName}
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
                 />
               </Stack>
-              <TextField
-                className="mb-4 w-full"
-                fullWidth
-                label="Email"
-                type="email"
-                variant="outlined"
-                required
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <div className="mb-4 w-full">
+              <Stack className='flex-row gap-2'>
+                <div className="mb-4 w-full">
+                  <TextField
+                    fullWidth
+                    label="Phone No"
+                    variant="outlined"
+                    required
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    InputProps={{
+                      startAdornment: (
+                        <select
+                          className="mr-1 p-1 border rounded"
+                          name="countryCode"
+                          value={formData.countryCode}
+                          onChange={handleChange}
+                        >
+                          <option value="US +1">US +1</option>
+                          <option value="IN +91">IN +91</option>
+                          {/* Add more country codes as needed */}
+                        </select>
+                      ),
+                    }}
+                  />
+                </div>
                 <TextField
+                  className="mb-4 w-full"
                   fullWidth
-                  label="Phone number"
+                  label="Company Name"
                   variant="outlined"
                   required
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
+                  name="company"
+                  value={formData.company}
                   onChange={handleChange}
-                  InputProps={{
-                    startAdornment: (
-                      <select
-                        className="mr-2 p-2 border rounded"
-                        name="countryCode"
-                        value={formData.countryCode}
-                        onChange={handleChange}
-                      >
-                        <option value="US +1">US +1</option>
-                        <option value="IN +91">IN +91</option>
-                        {/* Add more country codes as needed */}
-                      </select>
-                    ),
-                  }}
                 />
-              </div>
-              <TextField
-                className="mb-4 w-full"
-                fullWidth
-                label="Message"
-                multiline
-                rows={4}
-                variant="outlined"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-              />
+              </Stack>
+              <FormControl className="mb-4 w-full">
+                <InputLabel>What best describes your role? *</InputLabel>
+                <Select
+                  name="role"
+                  value={formData.role}
+                  onChange={handleChange}
+                  label="What best describes your role?"
+                  required
+                >
+                  <MenuItem value="Bank/NBFC">Bank/NBFC</MenuItem>
+                  <MenuItem value="Investment advisory">Investment advisory</MenuItem>
+                  <MenuItem value="Insurance agent/agency">Insurance agent/agency</MenuItem>
+                  <MenuItem value="Loan agent">Loan agent</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
+                </Select>
+              </FormControl>
+              {formData.role === 'Other' && (
+                <TextField
+                  className="mb-4 w-full"
+                  fullWidth
+                  label="Please specify your role"
+                  variant="outlined"
+                  required
+                  name="otherRole"
+                  value={formData.otherRole}
+                  onChange={handleChange}
+                />
+              )}
+              <FormControl className="mb-4 w-full">
+                <InputLabel>Platform preference *</InputLabel>
+                <Select
+                  name="platform"
+                  value={formData.platform}
+                  onChange={handleChange}
+                  label="Platform preference"
+                  required
+                >
+                  <MenuItem value="Whatsapp">Whatsapp</MenuItem>
+                  <MenuItem value="Linkedin">Linkedin</MenuItem>
+                  <MenuItem value="Email">Email</MenuItem>
+                  <MenuItem value="Twitter">Twitter</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl className="mb-4 w-full">
+                <InputLabel>What&apos;s your ultimate goal? *</InputLabel>
+                <Select
+                  name="goal"
+                  value={formData.goal}
+                  onChange={handleChange}
+                  label="What's your ultimate goal?"
+                  required
+                >
+                  <MenuItem value="Increased lead conversions">Increased lead conversions</MenuItem>
+                  <MenuItem value="Reduced response times">Reduced response times</MenuItem>
+                  <MenuItem value="Higher customer satisfaction">Higher customer satisfaction</MenuItem>
+                  <MenuItem value="More closed deals">More closed deals</MenuItem>
+                </Select>
+              </FormControl>
               <div className="flex items-center mb-4">
                 <input
                   type="checkbox"
@@ -234,3 +293,4 @@ const ContactModal = ({ open, handleClose }) => {
 };
 
 export default ContactModal;
+

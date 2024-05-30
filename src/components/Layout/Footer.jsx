@@ -52,7 +52,7 @@ const Footer = ({openContact}) => {
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span><EmailIcon/> </span>
-                                <a href="mailto:hello@gobolar.io" className="hover:underline">hello@gobolar.io</a>
+                                <a href="mailto:hello@gobolar.io" className="hover:underline">hello@gopolar.io</a>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span><LocationOnIcon/></span>
