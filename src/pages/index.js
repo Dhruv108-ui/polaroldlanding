@@ -8,17 +8,17 @@ const services = [
   {
     icon: "Icons/mail.png",
     title: 'Find the Right Leads:',
-    description: 'Priya identifies and targets high-quality leads on WhatsApp and LinkedIn.',
+    description: 'Polar identifies and targets high-quality leads on WhatsApp and LinkedIn.',
   },
   {
     icon: "Icons/send.png",
     title: 'Reach Out Automatically:',
-    description: 'Priya sends personalized messages on WhatsApp and LinkedIn, saving you time.',
+    description: 'Polar sends personalized messages on WhatsApp and LinkedIn, saving you time.',
   },
   {
     icon: "Icons/ai.png",
     title: 'Nurture with AI:',
-    description: 'Priya engages and nurtures your leads with smart, ongoing conversations.',
+    description: 'Polar engages and nurtures your leads with smart, ongoing conversations.',
   },
   {
     icon: "Icons/call.png",
@@ -54,7 +54,7 @@ function App() {
                 leads on Whatsapp &<br /> Linkedin Seamlessly
               </Typography>
               <Typography variant="subtitle1" className="mt-4 text-[14px] sm:text-[20px] relative z-10">
-                <span className="font-bold">Polarr</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
+                <span className="font-bold">Polar</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
               </Typography>
               <Button variant="contained" className="mt-6 button" onClick={handleOpenModal}>
                 Join the Waitlist
@@ -71,7 +71,7 @@ function App() {
               Are you a <span className="gradient">Loan Agent</span>, Financial Advisor, Insurance Agent, or Mutual Fund Distributor?
             </Typography>
             <Typography variant="subtitle1" className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]">
-              <span className="gradient">Meet PRIYA</span>, your dedicated AI Sales Agent designed to revolutionize how you connect with potential clients. <span className="gradient">PRIYA</span> empowers you to create personalized agents that generate, and nurture leads on WhatsApp and LinkedIn, ensuring you never miss an opportunity in the financial services sector.
+              <span className="gradient">Meet Polar</span>, your dedicated AI Sales Agent designed to revolutionize how you connect with potential clients. <span className="gradient">Polar</span> empowers you to create personalized agents that generate, and nurture leads on WhatsApp and LinkedIn, ensuring you never miss an opportunity in the financial services sector.
             </Typography>
             <Button variant="contained" className="mt-6 button" onClick={handleOpenModal}>
               Join the Waitlist Now!
@@ -81,7 +81,7 @@ function App() {
         <Box className=" p-8 rounded-md  mx-auto text-center">
 
           <Typography variant="h4" className="font-[500] mb-12 text-[24px] sm:text-[48px]">
-            Why <span className="gradient">Priya</span> Outperforms?
+            Why <span className="gradient">Polar</span> Outperforms?
           </Typography>
           <Box flex={1} display="flex" justifyContent="center">
             <Box component="img" src="Landingpage/feature.png" alt="AI Agent" className="w-[110%] sm:w-full max-w-4xl mt-4" />
@@ -91,7 +91,7 @@ function App() {
         <section className="bg-white py-10 sm:py-16 mt-5 px-5 sm:px-24">
           <Stack className="mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{  padding: {xs:"30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
             <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px] font-[500]">
-              What Does <span className="gradient">Priya</span> Actually Do?
+              What Does <span className="gradient">Polar</span> Actually Do?
             </h2>
             <div className="container mx-auto px-6">
               <div className="grid grid-cols-1 sm:gap-8 md:grid-cols-2 lg:grid-cols-4 sm:px-12 py-5">
@@ -111,7 +111,7 @@ function App() {
         <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
           <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"50svh",sm:"70svh"}, width: "fit-content", zIndex: "0" }} />
           <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
-            Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Priya Yourself!</span>
+            Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Polar Yourself!</span>
           </Typography>
           <Box flex={1} display="flex" justifyContent="center " onClick={handleOpenModal}>
             <Box component="img" src="Icons/wp.png" alt="AI Agent" className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer" />
@@ -149,7 +149,7 @@ function App() {
         <Stack sx={{ justifyContent: "center", alignItems: "center", mb:{xs:"130px",sm:"200px"} }}>
           <Box component="img" src="Landingpage/bg2.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"30svh",sm:"40svh"}, zIndex: "0", mt:{xs:"30px",sm:"100px"} }} />
           <h2 className="text-3xl mb-5 text-[24px] sm:text-[48px] font-[600] relative z-1 mt-[30px] sm:mt-[100px]">
-            Want <span className="gradient">Priya </span>to Take Over?
+            Want <span className="gradient">Polar </span>to Take Over?
           </h2>
           <h2 className="text-3xl mb-12 text-[20px] sm:text-[35px] font-[600] relative z-1">
             Join the Waitlist Today!
