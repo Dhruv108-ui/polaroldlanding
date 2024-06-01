@@ -25,11 +25,11 @@ function BlogContainer({id,title,description,category,img,authorDetails}) {
                     <Link className='text-theme font-semibold' href={`/blog/${id}`}>Read more</Link>
                 </p> */}
                 <div className="flex mt-8 items-center">
-                    <div className="w-12 h-12 overflow-hidden rounded-full p-1">
+                    {authorDetails.name && <div className="w-12 h-12 overflow-hidden rounded-full p-1">
                         <img className='w-full h-full object-cover rounded-full' src={authorDetails.img} alt="" />
-                    </div>
+                    </div>}
                     <div className="ml-2 w-5/6">
-                        <a href="#" className="text-gray-700 font-medium">{authorDetails.name}</a>
+                        {authorDetails.name &&  <a href="#" className="text-gray-700 font-medium">{authorDetails.name}</a>}
                         <p className="text-gray-500 font-normal">{authorDetails.date}</p>
                     </div>
                 </div>
