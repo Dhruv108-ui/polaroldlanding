@@ -38,7 +38,7 @@ const ContactModal = ({ open, handleClose }) => {
     const fullPhoneNumber = `${formData.countryCode} ${formData.phoneNumber}`;
     const role = formData.role === 'Other' ? formData.otherRole : formData.role;
 
-    if (!formData.name || !formData.email || !formData.phoneNumber || !formData.company || !role || !formData.platform || !formData.goal) {
+    if (!formData.name || !formData.phoneNumber || !formData.company || !role || !formData.platform || !formData.goal) {
       setSnackbar({
         open: true,
         message: 'All fields are required!',
@@ -152,7 +152,6 @@ const ContactModal = ({ open, handleClose }) => {
                   label="E-mail ID"
                   type="email"
                   variant="outlined"
-                  required
                   name="email"
                   value={formData.email}
                   onChange={handleChange}

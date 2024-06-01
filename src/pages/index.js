@@ -3,6 +3,7 @@ import React from 'react';
 import { Button, Card, Stack, CardContent, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 import ContactModal from '@/components/Modal';
+import Link from 'next/link';
 
 const services = [
   {
@@ -125,9 +126,9 @@ function App() {
 
             <Box className="mt-8 flex flex-wrap justify-around px-4">
               {[
-                { image: 'Landingpage/comp1.png', title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
-                { image: 'Landingpage/comp2.jpg', title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
-                { image: 'Landingpage/comp3.png', title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
+                { image: 'Landingpage/comp1.png', link:"/blog/frnG3tir838Uukptm3pi", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
+                { image: 'Landingpage/comp2.jpg', link:"/blog/AKVNHEKgdx9uMwqtmSOE", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
+                { image: 'Landingpage/comp3.png', link:"/blog/ypdItGtRxlr6jeMcB3Ka", title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
               ].map((item, index) => (
                 <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
                   <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
@@ -136,9 +137,9 @@ function App() {
                       {item.title}
                     </Typography>
                     <p className='text-left text-[14px]'>{item.description}</p>
-                    <Button className="mt-4 gradient text-left items-start text-[14px] sm:text-[18px]" sx={{ textTransform: "none" }}>
+                    <Link href={item.link} className="mt-4 gradient text-left items-start text-[14px] sm:text-[18px]" sx={{ textTransform: "none" }}>
                       Read More
-                    </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
