@@ -5,6 +5,7 @@ import { useState } from 'react';
 import ContactModal from '@/components/Modal';
 import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+
 import Link from 'next/link';
 
 const services = [
