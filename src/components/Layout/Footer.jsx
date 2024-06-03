@@ -13,7 +13,7 @@ const Footer = ({openContact}) => {
                     <div className="flex flex-col space-y-4">
                         <div className="flex items-center space-x-2">
                             {/* Replace with your logo */}
-                            <img src="logo-white.png" alt="Polarr Logo" className="h-[60px]" />
+                            <img src="/logo-white.png" alt="Polarr Logo" className="h-[60px]" />
                        
                         </div>
                         <div>

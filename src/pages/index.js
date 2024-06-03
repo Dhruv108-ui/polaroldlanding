@@ -3,6 +3,8 @@ import React from 'react';
 import { Button, Card, Stack, CardContent, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 import ContactModal from '@/components/Modal';
+import dynamic from 'next/dynamic';
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 const services = [
   {
@@ -60,13 +62,28 @@ function App() {
                 Join the Waitlist
               </Button>
             </Box>
-            <Box flex={1} display="flex" justifyContent="center ">
-              <Box component="img" src="Landingpage/ai.png" alt="AI Agent" className="w-[80%] sm:w-full max-w-md rounded-lg shadow-lg relative z-10" />
+            <Box flex={1} display="flex" justifyContent="center">
+              <Box
+                position="relative"
+                width="80%"
+                height="350px"
+                maxWidth="md"
+                className="sm:w-full max-w-md rounded-lg shadow-lg"
+              >
+                <ReactPlayer
+                  url="https://youtu.be/aRaneA2Sw10?si=yzIMxZwA4m41Alr6"
+                  light="Landingpage/ai.png"
+                  playing
+                  width="100%"
+                  height="100%"
+                  className="relative z-10"
+                />
+              </Box>
             </Box>
           </Stack>
         </Box>
         <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16  text-center px-5 sm:px-24">
-          <Stack spacing={4} alignItems="center" className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{  padding: {xs:"30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
+          <Stack spacing={4} alignItems="center" className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: { xs: "30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
             <Typography variant="h4" className=" sm:w-[60%] text-[24px] sm:text-[48px] font-[500]">
               Are you a <span className="gradient">Loan Agent</span>, Financial Advisor, Insurance Agent, or Mutual Fund Distributor?
             </Typography>
@@ -89,7 +106,7 @@ function App() {
         </Box>
 
         <section className="bg-white py-10 sm:py-16 mt-5 px-5 sm:px-24">
-          <Stack className="mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{  padding: {xs:"30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
+          <Stack className="mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: { xs: "30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
             <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px] font-[500]">
               What Does <span className="gradient">Priya</span> Actually Do?
             </h2>
@@ -109,7 +126,7 @@ function App() {
           </Stack>
         </section>
         <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
-          <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"50svh",sm:"70svh"}, width: "fit-content", zIndex: "0" }} />
+          <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: { xs: "50svh", sm: "70svh" }, width: "fit-content", zIndex: "0" }} />
           <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
             Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Priya Yourself!</span>
           </Typography>
@@ -118,7 +135,7 @@ function App() {
           </Box>
         </section>
         <section className="bg-white  py-10 sm:py-16 mt-5 px-5 sm:px-24">
-          <Stack className="container mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: {xs:"30px 0px", md: "60px 0px" }, borderRadius: "15px" }}>
+          <Stack className="container mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: { xs: "30px 0px", md: "60px 0px" }, borderRadius: "15px" }}>
             <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px]  text-[#391383] font-bold">
               3 Major Case Studies
             </h2>
@@ -146,14 +163,17 @@ function App() {
           </Stack>
         </section>
 
-        <Stack sx={{ justifyContent: "center", alignItems: "center", mb:{xs:"130px",sm:"200px"} }}>
-          <Box component="img" src="Landingpage/bg2.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: {xs:"30svh",sm:"40svh"}, zIndex: "0", mt:{xs:"30px",sm:"100px"} }} />
+        <Stack sx={{ justifyContent: "center", alignItems: "center", mb: { xs: "130px", sm: "200px" } }}>
+          <Box component="img" src="Landingpage/bg2.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: { xs: "30svh", sm: "40svh" }, zIndex: "0", mt: { xs: "30px", sm: "100px" } }} />
           <h2 className="text-3xl mb-5 text-[24px] sm:text-[48px] font-[600] relative z-1 mt-[30px] sm:mt-[100px]">
             Want <span className="gradient">Priya </span>to Take Over?
           </h2>
-          <h2 className="text-3xl mb-12 text-[20px] sm:text-[35px] font-[600] relative z-1">
+          <h2 className="text-3xl mb-5 text-[20px] sm:text-[35px] font-[600] relative z-1">
             Join the Waitlist Today!
           </h2>
+          <Button variant="contained" className="button" onClick={handleOpenModal}>
+            Join the Waitlist
+          </Button>
         </Stack>
       </div>
     </>
