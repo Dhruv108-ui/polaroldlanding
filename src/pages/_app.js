@@ -5,6 +5,7 @@ import theme from "@/theme";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import ContactModal from "@/components/Modal";
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 function MyApp({ Component, pageProps }) {
   const [open, setOpen] = useState(false);
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
+      <GoogleAnalytics />
       <Header openContact={handleOpenModal} />
       <Component {...pageProps} />
       <Footer openContact={handleOpenModal} />
