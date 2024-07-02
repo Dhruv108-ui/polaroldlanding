@@ -78,10 +78,10 @@ const BlogPost = ({ blog, relatedBlogs }) => {
         <title>{blog.title}</title>
         <meta name="description" content={blog.description} />
         <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.metaDescription} />
+        <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={blog.thumbnail} />
         <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.metaDescription} />
+        <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={blog.thumbnail} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
