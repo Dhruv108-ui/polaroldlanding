@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 import Link from 'next/link';
+import Head from 'next/head';
 
 const services = [
   {
@@ -45,6 +46,18 @@ function App() {
   const handleCloseModal = () => setOpen(false);
   return (
     <>
+      <Head>
+        <title>Polar AI - Home</title>
+        <meta name="description" content="Polar is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services" />
+        <meta property="og:title" content="Polar AI - Home" />
+        <meta property="og:description" content="Polar is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services" />
+        <meta property="og:image" content="/logo-white.png" />
+        <meta name="twitter:title" content="Polar AI - Home" />
+        <meta name="twitter:description" content="Polar is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services" />
+        <meta name="twitter:image" content="/logo-white.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+      </Head>
       <ContactModal open={open} handleClose={handleCloseModal} />
       <div className="bg-white text-black">
         <Box component="img" src="Landingpage/bg.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: "72svh", zIndex: "0" }} />
@@ -144,9 +157,9 @@ function App() {
 
             <Box className="mt-8 flex flex-wrap justify-around px-4">
               {[
-                { image: 'Landingpage/comp1.png', link:"/case-study/01", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
-                { image: 'Landingpage/comp2.jpg', link:"/case-study/02", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
-                { image: 'Landingpage/comp3.png', link:"/case-study/03", title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
+                { image: 'Landingpage/comp1.png', link: "/case-study/01", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
+                { image: 'Landingpage/comp2.jpg', link: "/case-study/02", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
+                { image: 'Landingpage/comp3.png', link: "/case-study/03", title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
               ].map((item, index) => (
                 <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
                   <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
