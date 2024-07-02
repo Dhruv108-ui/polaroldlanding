@@ -76,7 +76,7 @@ const BlogPost = ({ blog, relatedBlogs }) => {
     <>
       <Head>
         <title>{blog.title}</title>
-        <meta name="description" content={blog.description} />
+        <meta name="description" content={metaDescription} />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={blog.thumbnail} />
