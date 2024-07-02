@@ -54,16 +54,34 @@ const BlogPost = ({ blog, relatedBlogs }) => {
     });
   };
 
+  function getMetaDescription(htmlString, maxLength = 160) {
+    // Remove HTML tags
+    const text = htmlString.replace(/<\/?[^>]+(>|$)/g, "");
+  
+    // Trim to the maxLength if necessary
+    if (text.length <= maxLength) {
+      return text;
+    }
+  
+    // Find the last space within the maxLength limit
+    const trimmedText = text.substring(0, maxLength);
+    const lastSpaceIndex = trimmedText.lastIndexOf(" ");
+  
+    return trimmedText.substring(0, lastSpaceIndex) + "...";
+  }
+  const metaDescription = getMetaDescription(blog.description);
+  console.log(metaDescription);  
+
   return (
     <>
       <Head>
         <title>{blog.title}</title>
         <meta name="description" content={blog.description} />
         <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.description} />
+        <meta property="og:description" content={blog.metaDescription} />
         <meta property="og:image" content={blog.thumbnail} />
         <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.description} />
+        <meta name="twitter:description" content={blog.metaDescription} />
         <meta name="twitter:image" content={blog.thumbnail} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
