@@ -13,6 +13,34 @@ import { database } from '@/assets/db/config';
 import { getDocs, collection } from 'firebase/firestore';
 import Head from 'next/head';
 
+// Dynamic Metadata Generation
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const blogCollection = collection(database, 'blog');
+  const blogSnapshot = await getDocs(blogCollection);
+  const blogList = blogSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  const blogData = blogList.find((blog) => blog.id === slug);
+
+  return {
+    title: blogData.title,
+    description: blogData.description,
+    openGraph: {
+      title: blogData.title,
+      description: blogData.description,
+      images: [blogData.thumbnail],
+    },
+    twitter: {
+      title: blogData.title,
+      description: blogData.description,
+      image: blogData.thumbnail,
+      card: 'summary_large_image',
+    },
+  };
+}
+
 function BlogPost({ slug }) {
   const [blog, setBlog] = useState({});
   const [timeToRead, setTimeToRead] = useState(0);
@@ -47,12 +75,12 @@ function BlogPost({ slug }) {
           id: doc.id,
           ...doc.data(),
         }));
-        const blogData = blogList.filter((blog) => blog.id === slug);
+        const blogData = blogList.find((blog) => blog.id === slug);
         if (blogData) {
-          setBlog(blogData[0]);
-          setTimeToRead(timeToReadBlog(blogData[0].description));
+          setBlog(blogData);
+          setTimeToRead(timeToReadBlog(blogData.description));
           document.getElementById('blog_description').innerHTML =
-            blogData[0].description;
+            blogData.description;
         } else {
           console.log('No Blog Found');
         }
@@ -72,10 +100,10 @@ function BlogPost({ slug }) {
         const relatedBlogs = blogList.filter(
           (blog) => blog.category === blog.category && blog.id !== slug
         );
-        blogList.forEach((blog) => {
+        relatedBlogs.forEach((blog) => {
           blog.description = blog.description.substring(0, 100);
           blog.description =
-            blog.description + `<a href='/blog/${blog.id}'>Read More</a>`;
+            blog.description + `...<a href='/blog/${blog.id}'>Read More</a>`;
         });
         if (relatedBlogs.length > 3) {
           setBlogs(relatedBlogs.slice(0, 3));
@@ -184,3 +212,4 @@ function BlogPost({ slug }) {
 }
 
 export default BlogPost;
+
