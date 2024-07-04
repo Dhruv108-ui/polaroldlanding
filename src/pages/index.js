@@ -73,8 +73,8 @@ function App() {
               <Typography variant="subtitle1" className="mt-4 text-[14px] sm:text-[20px] relative z-10">
                 <span className="font-bold">Polar</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
               </Typography>
-              <Button variant="contained" className="mt-6 button" onClick={handleOpenModal}>
-                Join the Waitlist
+              <Button variant="contained" className="mt-6 button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+                Book a Call
               </Button>
             </Box>
             <Box flex={1} display="flex" justifyContent="center">
@@ -105,8 +105,8 @@ function App() {
             <Typography variant="subtitle1" className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]">
               <span className="gradient">Meet Polar</span>, your dedicated AI Sales Agent designed to revolutionize how you connect with potential clients. <span className="gradient">Polar</span> empowers you to create personalized agents that generate, and nurture leads on WhatsApp and LinkedIn, ensuring you never miss an opportunity in the financial services sector.
             </Typography>
-            <Button variant="contained" className="mt-6 button" onClick={handleOpenModal}>
-              Join the Waitlist Now!
+            <Button variant="contained" className="mt-6 button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+              Book a Call
             </Button>
           </Stack>
         </Box>
@@ -145,7 +145,7 @@ function App() {
           <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
             Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Polar Yourself!</span>
           </Typography>
-          <Box flex={1} display="flex" justifyContent="center " onClick={handleOpenModal}>
+          <Box flex={1} component="a" display="flex" justifyContent="center " href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
             <Box component="img" src="Icons/wp.png" alt="AI Agent" className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer" />
           </Box>
         </section>
@@ -157,13 +157,13 @@ function App() {
 
             <Box className="mt-8 flex flex-wrap justify-around px-4">
               {[
-                { image: 'Landingpage/comp1.png', link: "/case-study/01", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
-                { image: 'Landingpage/comp2.jpg', link: "/case-study/02", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
-                { image: 'Landingpage/comp3.png', link: "/case-study/03", title: 'LexComply’s Efficiency Boost with Polar AI', description: 'LexComply is a legal compliance and consulting firm known for its comprehensive support and client-centric services. Despite their expertise, LexComply faced operational challenges that affected their client service levels.' }
+                { image: 'Landingpage/comp1.png', link: "/blog/frnG3tir838Uukptm3pi", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
+                { image: 'Landingpage/comp2.jpg', link: "/blog/AKVNHEKgdx9uMwqtmSOE", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
+                { image: 'Landingpage/comp3.png', link: "/blog/ypdItGtRxlr6jeMcB3Ka", title: 'Zephyer Venture Partners', description: 'Zephyer Venture Partners is a prominent venture capital firm that manages a diverse portfolio of investments across multiple industries. The firm’s top management team faced challenges in accessing real-time business insights and making data-driven decisions efficiently. They relied heavily on external consultants to gather and analyze data, which resulted in increased costs and delayed decision-making processes.' }
               ].map((item, index) => (
                 <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
                   <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
-                    <img src={item.image} alt="blog banner" className="max-h-[175px] w-full text-left mb-2" style={{ objectFit: "cover", borderRadius: "8px" }} />
+                    <img src={item.image} alt="blog banner" className="h-[175px] w-full text-left mb-2 object-contain" style={{ borderRadius: "8px" }} />
                     <Typography variant="h6" className="font-semibold text-left text-[18px] sm:text-[22px]">
                       {item.title}
                     </Typography>
@@ -186,8 +186,8 @@ function App() {
           <h2 className="text-3xl mb-5 text-[20px] sm:text-[35px] font-[600] relative z-1">
             Join the Waitlist Today!
           </h2>
-          <Button variant="contained" className="button" onClick={handleOpenModal}>
-            Join the Waitlist
+          <Button variant="contained" className="button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+            Book a Call
           </Button>
         </Stack>
       </div>
