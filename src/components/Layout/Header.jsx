@@ -16,7 +16,7 @@ const Header = ({openContact}) => {
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar position="static" sx={{ bgcolor: "white", boxShadow: "none" }}>
                         <Toolbar className="flex justify-between mx-20">
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center' }} component="a" href="/">
                             <Image src="/logo-black.png" alt="logo" width={100} height={100} className="flex-grow-1" />
                             </Box>
                             <Box className="flex items-center text-black sm:hidden xs:hidden md:flex">

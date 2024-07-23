@@ -28,13 +28,13 @@ const Footer = ({openContact}) => {
                     {/* Links and Contact */}
                     <div className="flex flex-col sm:flex-row sm:space-x-16 mt-8 sm:mt-0 gap-6 sm:gap-0">
                         <div className="flex flex-col space-y-2">
-                            <a href="#" className="hover:underline font-bold">Terms & Conditions</a>
+                            <a href="/terms-and-conditions" className="hover:underline font-bold">Terms & Conditions</a>
                             
                            
 
                         </div>
                         <div className="flex flex-col space-y-2">
-                        <a href="#" className="hover:underline font-bold">Privacy Policy</a>
+                        <a href="/privacy-policy" className="hover:underline font-bold">Privacy Policy</a>
                             
                            
 
