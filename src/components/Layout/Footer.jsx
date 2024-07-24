@@ -4,6 +4,7 @@ import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Button } from '@mui/material';
+import Link from 'next/link';
 const Footer = ({openContact}) => {
     
     return (
@@ -28,13 +29,13 @@ const Footer = ({openContact}) => {
                     {/* Links and Contact */}
                     <div className="flex flex-col sm:flex-row sm:space-x-16 mt-8 sm:mt-0 gap-6 sm:gap-0">
                         <div className="flex flex-col space-y-2">
-                            <a href="/terms-and-conditions" className="hover:underline font-bold">Terms & Conditions</a>
+                            <Link href="/terms-and-conditions" className="hover:underline font-bold">Terms & Conditions</Link>
                             
                            
 
                         </div>
                         <div className="flex flex-col space-y-2">
-                        <a href="/privacy-policy" className="hover:underline font-bold">Privacy Policy</a>
+                        <Link href="/privacy-policy" className="hover:underline font-bold">Privacy Policy</Link>
                             
                            
 

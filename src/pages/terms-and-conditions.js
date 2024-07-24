@@ -12,7 +12,7 @@ const TermsOfService = () => {
                     <strong>Effective Date: 23/07/2024</strong>
                     <Stack sx={{ mt: "15px" }}>
                         <p><strong>Introduction</strong></p>
-                        <p>These Terms of Service ("Terms") govern your use of the services provided by Polar AI ("we," "us," or "our"). By accessing or using our services, you agree to be bound by these Terms.</p>
+                        <p>These Terms of Service (&quot;Terms&quot;) govern your use of the services provided by Polar AI (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing or using our services, you agree to be bound by these Terms.</p>
                     </Stack>
                     <Stack sx={{ mt: "15px" }}>
                         <p><strong>Use of Services</strong></p>
@@ -33,7 +33,7 @@ const TermsOfService = () => {
                     <Stack sx={{ mt: "15px" }}>
                         <p><strong>Disclaimers and Limitation of Liability</strong></p>
                         <p><strong>Disclaimers</strong></p>
-                        <p>Our services are provided "as is" and "as available." We disclaim all warranties, express or implied, including those of merchantability, fitness for a particular purpose, and non-infringement.</p>
+                        <p>Our services are provided &quot;as is&quot; and &quot;as available.&quot; We disclaim all warranties, express or implied, including those of merchantability, fitness for a particular purpose, and non-infringement.</p>
                         <p><strong>Limitation of Liability</strong></p>
                         <p>To the maximum extent permitted by law, Polar AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (i) your use or inability to use our services; (ii) any unauthorized access to or use of our servers and/or any personal information stored therein.</p>
                     </Stack>

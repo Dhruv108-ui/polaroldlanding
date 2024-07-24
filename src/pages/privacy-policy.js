@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
                 <Stack>
                     <Stack sx={{ mt: "15px" }}>
                         <strong>Introduction</strong>
-                        <p>Polar AI ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services. By accessing or using our services, you agree to the terms of this Privacy Policy.</p>
+                        <p>Polar AI (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services. By accessing or using our services, you agree to the terms of this Privacy Policy.</p>
                     </Stack>
                     <Stack sx={{ mt: "15px" }}>
                         <strong>Information We Collect</strong>
