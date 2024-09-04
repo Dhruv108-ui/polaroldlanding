@@ -12,24 +12,24 @@ import Head from 'next/head';
 const services = [
   {
     icon: "Icons/mail.png",
-    title: 'Find the Right Leads:',
-    description: 'Polar identifies and targets high-quality leads on WhatsApp and LinkedIn.',
+    title: 'Sales Workforce:',
+    description: 'Convert leads 25% faster with a virtual sales team engaging prospects on platforms like WhatsApp, LinkedIn, Email etc.',
   },
   {
     icon: "Icons/send.png",
-    title: 'Reach Out Automatically:',
-    description: 'Polar sends personalized messages on WhatsApp and LinkedIn, saving you time.',
+    title: 'Customer Retention Workforce:',
+    description: 'Cut support tickets by 75% and reduce service costs by up to 40%.',
   },
   {
     icon: "Icons/ai.png",
-    title: 'Nurture with AI:',
-    description: 'Polar engages and nurtures your leads with smart, ongoing conversations.',
+    title: 'C-Suite Workforce:',
+    description: 'Gain real-time insights and make data-driven decisions faster with integrated analytics. ',
   },
-  {
-    icon: "Icons/call.png",
-    title: 'Book Qualified Calls:',
-    description: 'Schedule calls only with pre-qualified leads, ensuring you focus on the best prospects.',
-  },
+  // {
+  //   icon: "Icons/call.png",
+  //   title: 'Book Qualified Calls:',
+  //   description: 'Schedule calls only with pre-qualified leads, ensuring you focus on the best prospects.',
+  // },
 ];
 
 const ServiceCard = ({ icon, title, description, showBorder }) => (
@@ -65,10 +65,10 @@ function App() {
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="center">
             <Box flex={1}>
               <Typography variant="h3" className="gradient text-[24px] sm:text-[48px] relative z-10">
-                Capture & Convert
+              Supercharge Your Sales
               </Typography>
               <Typography variant="h3" className="font-bold text-[#18181B] text-[24px] sm:text-[48px] relative z-10">
-                leads on Whatsapp &<br /> Linkedin Seamlessly
+              Retention, and Executive<br /> Decision-Making with AI
               </Typography>
               <Typography variant="subtitle1" className="mt-4 text-[14px] sm:text-[20px] relative z-10">
                 <span className="font-bold">Polar</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
@@ -100,10 +100,10 @@ function App() {
         <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16  text-center px-5 sm:px-24">
           <Stack spacing={4} alignItems="center" className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: { xs: "30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
             <Typography variant="h4" className=" sm:w-[60%] text-[24px] sm:text-[48px] font-[500]">
-              Are you a <span className="gradient">Loan Agent</span>, Financial Advisor, Insurance Agent, or Mutual Fund Distributor?
+            For  <span className="gradient">Banks</span>, Financial Institutions, NBFCs & Distributors Polar has just arrived for you!
             </Typography>
             <Typography variant="subtitle1" className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]">
-              <span className="gradient">Meet Polar</span>, your dedicated AI Sales Agent designed to revolutionize how you connect with potential clients. <span className="gradient">Polar</span> empowers you to create personalized agents that generate, and nurture leads on WhatsApp and LinkedIn, ensuring you never miss an opportunity in the financial services sector.
+              <span className="gradient">Meet Polar</span>, your AI partner for transforming client interactions and business efficiency. <span className="gradient">Polar</span> boosts conversions, enhance client retention, and streamline decision-making with our tailored AI solutions.
             </Typography>
             <Button variant="contained" className="mt-6 button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
               Book a Call
@@ -116,7 +116,7 @@ function App() {
             Why <span className="gradient">Polar</span> Outperforms?
           </Typography>
           <Box flex={1} display="flex" justifyContent="center">
-            <Box component="img" src="Landingpage/feature.png" alt="AI Agent" className="w-[110%] sm:w-full max-w-4xl mt-4" />
+            <Box component="img" src="Landingpage/main.png" alt="AI Agent" className="w-[110%] sm:w-full max-w-4xl mt-4" />
           </Box>
         </Box>
 
@@ -126,7 +126,7 @@ function App() {
               What Does <span className="gradient">Polar</span> Actually Do?
             </h2>
             <div className="container mx-auto px-6">
-              <div className="grid grid-cols-1 sm:gap-8 md:grid-cols-2 lg:grid-cols-4 sm:px-12 py-5">
+              <div className="grid grid-cols-1 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 sm:px-12 py-5">
                 {services.map((service, index) => (
                   <ServiceCard
                     key={index}
@@ -157,9 +157,9 @@ function App() {
 
             <Box className="mt-8 flex flex-wrap justify-around px-4">
               {[
-                { image: 'Landingpage/comp1.png', link: "/blog/frnG3tir838Uukptm3pi", title: 'Midson Advisors’ Transformation with Polar AI', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
-                { image: 'Landingpage/comp2.jpg', link: "/blog/AKVNHEKgdx9uMwqtmSOE", title: 'Investales’ Transformation with Polar AI', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
-                { image: 'Landingpage/comp3.png', link: "/blog/ypdItGtRxlr6jeMcB3Ka", title: 'Zephyer Venture Partners', description: 'Zephyer Venture Partners is a prominent venture capital firm that manages a diverse portfolio of investments across multiple industries. The firm’s top management team faced challenges in accessing real-time business insights and making data-driven decisions efficiently. They relied heavily on external consultants to gather and analyze data, which resulted in increased costs and delayed decision-making processes.' }
+                { image: 'Landingpage/comp1.png', link: "/blog/frnG3tir838Uukptm3pi", title: 'Enhanced client engagement and growth', description: 'Midson Advisors is a financial services firm that specializes in wealth management and investment consulting. With a significant client base and a comprehensive suite of services, Midson Advisors had established itself as a reliable player in the financial sector.' },
+                { image: 'Landingpage/comp2.jpg', link: "/blog/AKVNHEKgdx9uMwqtmSOE", title: 'Overcame lead management challenges', description: 'Investales is a premier financial advisory firm specializing in mutual funds and investment planning. Despite a robust client base and a strong reputation, Investales faced significant challenges in lead management and client communication.' },
+                { image: 'Landingpage/comp3.png', link: "/blog/ypdItGtRxlr6jeMcB3Ka", title: 'Streamlined decision-making and reduced costs.', description: 'Zephyer Venture Partners is a prominent venture capital firm that manages a diverse portfolio of investments across multiple industries. The firm’s top management team faced challenges in accessing real-time business insights and making data-driven decisions efficiently. They relied heavily on external consultants to gather and analyze data, which resulted in increased costs and delayed decision-making processes.' }
               ].map((item, index) => (
                 <Card key={index} className="m-4 flex" sx={{ borderRadius: "8px" }}>
                   <CardContent className='flex flex-col justify-start items-start sm:min-w-[370px] sm:max-w-[370px] pb-4'>
