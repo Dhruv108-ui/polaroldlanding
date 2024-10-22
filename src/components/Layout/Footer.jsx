@@ -20,7 +20,7 @@ const Footer = ({openContact}) => {
                         </div>
                         <div>
                             <h2 className="text-lg">Ready to get started?</h2>
-                            <Button className="mt-6 bg-white text-black py-2 px-8 rounded-md hover:bg-gray-200 font-[500]" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank' sx={{textTransform:"none"}}>
+                            <Button className="mt-6 bg-white text-black py-2 px-8 rounded-md hover:bg-gray-200 font-[500]" href='https://calendly.com/vidisha-gopolar/30min' target='blank' sx={{textTransform:"none"}}>
                                 Book a call
                             </Button>
                         </div>
