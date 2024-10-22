@@ -68,12 +68,12 @@ function App() {
               Supercharge Your Sales
               </Typography>
               <Typography variant="h3" className="font-bold text-[#18181B] text-[24px] sm:text-[48px] relative z-10">
-              Retention, and Executive<br /> Decision-Making with AI
+              Retention, and <br /> Decision-Making with AI
               </Typography>
               <Typography variant="subtitle1" className="mt-4 text-[14px] sm:text-[20px] relative z-10">
-                <span className="font-bold">Polar</span> is the AI Infrastructure for generating and nurturing leads on Whatsapp and LinkedIn for Financial Services
+                <span className="font-bold">Introducing Polar</span> Your AI Infrastructure for WhatsApp and Email Marketing
               </Typography>
-              <Button variant="contained" className="mt-6 button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+              <Button variant="contained" className="mt-6 button" href='https://calendly.com/vidisha-gopolar/30min' target='blank'>
                 Book a Call
               </Button>
             </Box>
@@ -100,12 +100,12 @@ function App() {
         <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16  text-center px-5 sm:px-24">
           <Stack spacing={4} alignItems="center" className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]" sx={{ padding: { xs: "30px 20px", md: "60px 0px" }, borderRadius: "15px" }}>
             <Typography variant="h4" className=" sm:w-[60%] text-[24px] sm:text-[48px] font-[500]">
-            For  <span className="gradient">Banks</span>, Financial Institutions, NBFCs & Distributors Polar has just arrived for you!
+            <span className="gradient">Polar</span> is here to revolutionize your approach to customer engagement and business efficiency
             </Typography>
             <Typography variant="subtitle1" className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]">
-              <span className="gradient">Meet Polar</span>, your AI partner for transforming client interactions and business efficiency. <span className="gradient">Polar</span> boosts conversions, enhance client retention, and streamline decision-making with our tailored AI solutions.
+              With our <span className="gradient">AI customer support, AI sales agents</span>,and <span className="gradient">AI marketing tools</span> you can effortlessly <span className="gradient">generate and nurture leads</span> through <span className="gradient">WhatsApp automation</span>  and <span className="gradient">email automation</span>
             </Typography>
-            <Button variant="contained" className="mt-6 button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+            <Button variant="contained" className="mt-6 button" href='https://calendly.com/vidisha-gopolar/30min' target='blank'>
               Book a Call
             </Button>
           </Stack>
@@ -143,9 +143,9 @@ function App() {
         <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
           <Box component="img" src="Landingpage/ellipse.png" alt="AI Agent" className="w-full" sx={{ position: "absolute", height: { xs: "50svh", sm: "70svh" }, width: "fit-content", zIndex: "0" }} />
           <Typography variant="h4" className="font-bold text-[24px] sm:text-[48px] relative z-1 px-4">
-            Don&apos;t Believe Us? Try talking to<br /><span className='gradient text-[26px] sm:text-56px]'>Polar Yourself!</span>
+          Still not convinced? Experience the power of AI by interacting with one of our clients AI-powered agents!<br /><span className='gradient text-[26px] sm:text-56px]'>What can it do? You can ask it anything, perform calculations, or simply have a conversation to see how our AI sales tools and AI customer tools work in real-time</span>
           </Typography>
-          <Box flex={1} component="a" display="flex" justifyContent="center " href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+          <Box flex={1} component="a" display="flex" justifyContent="center " href='https://wa.link/d48oih' target='blank'>
             <Box component="img" src="Icons/wp.png" alt="AI Agent" className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer" />
           </Box>
         </section>
@@ -186,7 +186,7 @@ function App() {
           <h2 className="text-3xl mb-5 text-[20px] sm:text-[35px] font-[600] relative z-1">
             Join the Waitlist Today!
           </h2>
-          <Button variant="contained" className="button" href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>
+          <Button variant="contained" className="button" href='https://calendly.com/vidisha-gopolar/30min' target='blank'>
             Book a Call
           </Button>
         </Stack>
