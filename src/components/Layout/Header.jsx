@@ -25,7 +25,7 @@ const Header = ({openContact}) => {
                                 <Button color="inherit" className="rounded-lg text-white py-2 px-9 text-base normal-case" sx={{
                                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                                     background: 'linear-gradient(to right, #211AEB, #7C36FE)',
-                                }} href='https://teams.microsoft.com/l/meetup-join/19:meeting_YWI0MGU3YTYtNDczYy00YmJkLThiZWEtYzcwMzYzYWNiNTc3@thread.v2/0?context=%7B%22Tid%22:%227bad2f1c-3042-45ee-831d-d77ee748fc8c%22,%22Oid%22:%22d2a858af-fe8f-4a11-87f4-230ad82724f1%22%7D' target='blank'>Book a Call</Button>
+                                }} href='https://calendly.com/vidisha-gopolar/30min' target='blank'>Book a Call</Button>
                             </Box>
                             <IconButton
                                 size="large"
