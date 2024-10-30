@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@300;400;500;600;700;800&family=Yanone+Kaffeesatz:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@300;400;500;600;700;800&family=Yanone+Kaffeesatz:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,56 +24,56 @@
 }
 .gradient {
   font-weight: bold;
-  background: linear-gradient(270deg, #211AEB 0%, #7C36FE 100%);
+  background: linear-gradient(270deg, #211aeb 0%, #7c36fe 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.button{
+.button {
   border-radius: 8px;
-background: var(--Linear, linear-gradient(270deg, #211AEB 0%, #7C36FE 100%));
-padding: 10px 30px;
-text-transform: inherit;
+  background: var(--Linear, linear-gradient(270deg, #211aeb 0%, #7c36fe 100%));
+  padding: 10px 30px;
+  text-transform: inherit;
 }
-*{
-  font-family: "Plus Jakarta Sans"; 
+* {
+  font-family: "Plus Jakarta Sans";
 }
 pre {
-  background: #0D0D0D;
-  color: #FFF;
-  font-family: 'JetBrainsMono', monospace;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  }
-  
-  pre code {
+}
+
+pre code {
   color: inherit;
   white-space: break-spaces;
   padding: 0;
   background: none;
   font-size: 0.8rem;
-  }
+}
 
-  @layer base {
-    h1 {
-      @apply text-4xl font-bold leading-10;
-    }
-    h2 {
-      @apply text-3xl font-bold leading-10;
-    }
-    h3 {
-      @apply text-2xl font-bold leading-10;
-    }
-    h4 {
-      @apply text-xl font-bold leading-10;
-    }
-    h5 {
-      @apply text-lg font-bold leading-10;
-    }
-    h6 {
-      @apply text-[16px] font-bold leading-10;
-    }
+@layer base {
+  h1 {
+    @apply text-4xl font-bold leading-10;
   }
-  .blog-content > * + * {
-    margin-top: 0.75em;
-    }
+  h2 {
+    @apply text-3xl font-bold leading-10;
+  }
+  h3 {
+    @apply text-2xl font-bold leading-10;
+  }
+  h4 {
+    @apply text-xl font-bold leading-10;
+  }
+  h5 {
+    @apply text-lg font-bold leading-10;
+  }
+  h6 {
+    @apply text-[16px] font-bold leading-10;
+  }
+}
+.blog-content > * + * {
+  margin-top: 0.75em;
+}
