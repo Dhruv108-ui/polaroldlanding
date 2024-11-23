@@ -115,7 +115,10 @@ const ContactForm = () => {
    */
   const sendEmail = async (data) => {
     const templateParams = {
+      to_name: 'Jatin',
       from_name: data.name,
+      phone: data.mobile,
+      email: data.email,
       message: data.message,
     };
     try {
