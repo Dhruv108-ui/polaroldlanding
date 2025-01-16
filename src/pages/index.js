@@ -23,7 +23,7 @@ const services = [
     icon: "Icons/mail.png",
     title: "Sales Workforce:",
     description:
-      "Convert leads 25% faster with a virtual sales team engaging prospects on platforms like WhatsApp, LinkedIn, Email etc.",
+      "Convert leads 30% faster with a virtual sales team engaging prospects on platforms like WhatsApp, LinkedIn, Email etc.",
   },
   {
     icon: "Icons/send.png",
