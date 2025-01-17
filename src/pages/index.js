@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
   Card,
@@ -7,17 +7,14 @@ import {
   CardContent,
   Typography,
   Box,
-  TextField,
 } from "@mui/material";
-import { useState } from "react";
-import ContactModal from "@/components/Modal";
-// import dynamic from "next/dynamic";
-// const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
-
 import Link from "next/link";
 import Head from "next/head";
+import ContactModal from "@/components/Modal";
+import ContactModalNew from "@/components/ModalNew";
 import ContactForm from "@/components/contact/contactForm";
 
+// --- Services Data ---
 const services = [
   {
     icon: "Icons/mail.png",
@@ -28,8 +25,7 @@ const services = [
   {
     icon: "Icons/send.png",
     title: "Customer Retention Workforce:",
-    description:
-      "Cut support tickets by 75% and reduce service costs by up to 40%.",
+    description: "Cut support tickets by 75% and reduce service costs by up to 40%.",
   },
   {
     icon: "Icons/ai.png",
@@ -37,13 +33,9 @@ const services = [
     description:
       "Gain real-time insights and make data-driven decisions faster with integrated analytics. ",
   },
-  // {
-  //   icon: "Icons/call.png",
-  //   title: 'Book Qualified Calls:',
-  //   description: 'Schedule calls only with pre-qualified leads, ensuring you focus on the best prospects.',
-  // },
 ];
 
+// --- Service Card Component ---
 const ServiceCard = ({ icon, title, description, showBorder }) => (
   <div
     className={`flex flex-col items-start p-6 mt-5  ${
@@ -62,11 +54,52 @@ const ServiceCard = ({ icon, title, description, showBorder }) => (
     </p>
   </div>
 );
+
+// --- Main App Component ---
 function App() {
+  // --- State for opening standard contact modal (by a button click) ---
   const [open, setOpen] = useState(false);
 
+  // --- Scroll-based modal states ---
+  const [scrollModalOpen, setScrollModalOpen] = useState(false);
+  const hasReachedBottom = useRef(false);
+  const prevScrollPos = useRef(0);
+
+  // --- Handlers for the normal contact modal ---
   const handleOpenModal = () => setOpen(true);
   const handleCloseModal = () => setOpen(false);
+
+  // --- Sticky Modal Handlers (scroll-based) ---
+  const handleCloseScrollModal = () => setScrollModalOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const totalHeight = document.documentElement.scrollHeight;
+
+      // Check if user scrolled to bottom
+      if (currentScrollPos + windowHeight >= totalHeight - 2) {
+        hasReachedBottom.current = true;
+      }
+
+      // If user reached bottom, then scrolls up => open modal
+      if (
+        hasReachedBottom.current &&
+        currentScrollPos < prevScrollPos.current
+      ) {
+        setScrollModalOpen(true);
+        // Reset so it doesn't keep opening the modal
+        hasReachedBottom.current = false;
+      }
+
+      // Update previous scroll position
+      prevScrollPos.current = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -90,7 +123,44 @@ function App() {
         <meta name="twitter:image" content="/logo-white.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
+      {/** 
+       * 1) Existing Modal (Opened by normal button click).
+       */}
       <ContactModal open={open} handleClose={handleCloseModal} />
+
+      {/**
+       * 2) Scroll-based Contact Modal
+       */}
+      <ContactModalNew open={scrollModalOpen} handleClose={handleCloseScrollModal} />
+
+      {/**
+       * 3) Sticky "Book a Call" Button on the right
+       */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: "42%",
+          right:{ xs: "3%", sm: "1.5%", md: "1%" },
+          transform: "translateY(-50%) rotate(-90deg)",
+          transformOrigin: "center right",
+          zIndex: 2000, // Make sure it is above other elements
+          
+        }}
+      >
+        <Button
+          variant="contained"
+          className="button"
+          href="https://calendly.com/vidisha-gopolar/30min"
+          target="_blank"
+        >
+          Book a Call
+        </Button>
+      </Box>
+
+      {/** 
+       * 4) Page Content
+       */}
       <div className="bg-white text-black">
         <Box
           component="img"
@@ -125,6 +195,10 @@ function App() {
                 <span className="font-bold">Introducing Polar </span>
                 Your AI Infrastructure for WhatsApp and Email Marketing
               </Typography>
+              {/**
+               * Original "Book a Call" button that opens normal modal 
+               * or you can link to Calendly as well
+               */}
               <Button
                 variant="contained"
                 className="mt-6 button"
@@ -135,32 +209,35 @@ function App() {
               </Button>
             </Box>
             <Box flex={1} sx={{ maxWidth: "100%", m: 2 }}>
-              <span className="ms-5 font-bold text-[20px] gradient">Request a Demo</span>
-              {/* <Box
-                position="relative"
-                width="80%"
-                height="350px"
-                maxWidth="md"
-                className="sm:w-full max-w-md rounded-lg shadow-lg"
-              >
-                <ReactPlayer
-                  url="https://youtu.be/aRaneA2Sw10?si=yzIMxZwA4m41Alr6"
-                  light="Landingpage/ai.png"
-                  playing
-                  width="100%"
-                  height="100%"
-                  className="relative z-10"
-                />
-              </Box> */}
-
+              <span className="ms-5 font-bold text-[20px] gradient">
+                Request a Demo
+              </span>
+              {/* 
+              // If you are using ReactPlayer, you can re-enable it:
+              // <Box
+              //   position="relative"
+              //   width="80%"
+              //   height="350px"
+              //   maxWidth="md"
+              //   className="sm:w-full max-w-md rounded-lg shadow-lg"
+              // >
+              //   <ReactPlayer
+              //     url="https://youtu.be/aRaneA2Sw10?si=yzIMxZwA4m41Alr6"
+              //     light="Landingpage/ai.png"
+              //     playing
+              //     width="100%"
+              //     height="100%"
+              //     className="relative z-10"
+              //   />
+              // </Box> 
+              */}
               {/* Contact Form  */}
-              {
-                <ContactForm/>
-              }
+              <ContactForm />
             </Box>
           </Stack>
         </Box>
-        <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16  text-center px-5 sm:px-24">
+
+        <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16 text-center px-5 sm:px-24">
           <Stack
             spacing={4}
             alignItems="center"
@@ -185,10 +262,10 @@ function App() {
               <span className="gradient">
                 AI customer support, AI sales agents
               </span>
-              ,and <span className="gradient">AI marketing tools</span> you can
+              , and <span className="gradient">AI marketing tools</span> you can
               effortlessly{" "}
-              <span className="gradient">generate and nurture leads</span>{" "}
-              through <span className="gradient">WhatsApp automation</span> and{" "}
+              <span className="gradient">generate and nurture leads</span> through{" "}
+              <span className="gradient">WhatsApp automation</span> and{" "}
               <span className="gradient">email automation</span>
             </Typography>
             <Button
@@ -201,7 +278,8 @@ function App() {
             </Button>
           </Stack>
         </Box>
-        <Box className=" p-8 rounded-md  mx-auto text-center">
+
+        <Box className="p-8 rounded-md mx-auto text-center">
           <Typography
             variant="h4"
             className="font-[500] mb-12 text-[24px] sm:text-[48px]"
@@ -244,6 +322,7 @@ function App() {
             </div>
           </Stack>
         </section>
+
         <section className="py-10 sm:py-16 text-center flex flex-col justify-center">
           <Box
             component="img"
@@ -286,7 +365,8 @@ function App() {
             />
           </Box>
         </section>
-        <section className="bg-white  py-10 sm:py-16 mt-5 px-5 sm:px-24">
+
+        <section className="bg-white py-10 sm:py-16 mt-5 px-5 sm:px-24">
           <Stack
             className="container mx-auto text-center bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]"
             sx={{
@@ -294,10 +374,9 @@ function App() {
               borderRadius: "15px",
             }}
           >
-            <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px]  text-[#391383] font-bold">
+            <h2 className="text-3xl sm:mb-12 text-[24px] sm:text-[48px] text-[#391383] font-bold">
               3 Major Case Studies
             </h2>
-
             <Box className="mt-8 flex flex-wrap justify-around px-4">
               {[
                 {
@@ -344,7 +423,7 @@ function App() {
                     <Link
                       href={item.link}
                       className="mt-4 gradient text-left items-start text-[14px] sm:text-[18px]"
-                      sx={{ textTransform: "none" }}
+                      style={{ textTransform: "none" }}
                     >
                       Read More
                     </Link>

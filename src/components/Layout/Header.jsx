@@ -15,7 +15,7 @@ const Header = ({openContact}) => {
             <Stack className="bg-white py-4">
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar position="static" sx={{ bgcolor: "white", boxShadow: "none" }}>
-                        <Toolbar className="flex justify-between mx-20">
+                        <Toolbar className="flex justify-between sm:mx-20">
                             <Box sx={{ display: 'flex', alignItems: 'center' }} component="a" href="/">
                             <Image src="/logo-black.png" alt="logo" width={100} height={100} className="flex-grow-1" />
                             </Box>
