@@ -140,11 +140,12 @@ function App() {
       <Box
         sx={{
           position: "fixed",
-          top: "50%",
-          right: "0.5%",
-          transform: "translateY(-50%)",
+          top: "42%",
+          right:{ xs: "3%", sm: "1.5%", md: "1%" },
+          transform: "translateY(-50%) rotate(-90deg)",
+          transformOrigin: "center right",
           zIndex: 2000, // Make sure it is above other elements
-          display: { xs: "none", sm: "block" }, // Hide on mobile if needed
+          
         }}
       >
         <Button
