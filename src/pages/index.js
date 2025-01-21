@@ -193,7 +193,7 @@ function App() {
                 className="mt-4 text-[14px] sm:text-[20px] relative z-10"
               >
                 <span className="font-bold">Introducing Polar </span>
-                Your AI Infrastructure for WhatsApp and Email Marketing
+                Your Agentic AI Infrastructure for WhatsApp, Email, and Call
               </Typography>
               {/**
                * Original "Book a Call" button that opens normal modal 
@@ -238,46 +238,63 @@ function App() {
         </Box>
 
         <Box className="bg-gradient-to-br bg-white py-10 pt-16 sm:py-16 text-center px-5 sm:px-24">
-          <Stack
-            spacing={4}
-            alignItems="center"
-            className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]"
-            sx={{
-              padding: { xs: "30px 20px", md: "60px 0px" },
-              borderRadius: "15px",
-            }}
-          >
-            <Typography
-              variant="h4"
-              className=" sm:w-[60%] text-[24px] sm:text-[48px] font-[500]"
-            >
-              <span className="gradient">Polar</span> is here to revolutionize
-              your approach to customer engagement and business efficiency
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]"
-            >
-              With our{" "}
-              <span className="gradient">
-                AI customer support, AI sales agents
-              </span>
-              , and <span className="gradient">AI marketing tools</span> you can
-              effortlessly{" "}
-              <span className="gradient">generate and nurture leads</span> through{" "}
-              <span className="gradient">WhatsApp automation</span> and{" "}
-              <span className="gradient">email automation</span>
-            </Typography>
-            <Button
-              variant="contained"
-              className="mt-6 button"
-              href="https://calendly.com/vidisha-gopolar/30min"
-              target="blank"
-            >
-              Book a Call
-            </Button>
-          </Stack>
-        </Box>
+  <Stack
+    spacing={4}
+    alignItems="center"
+    className="bg-gradient-to-br from-[#f8fbff] to-[#faf1fd]"
+    sx={{
+      padding: { xs: "30px 20px", md: "60px 0px" },
+      borderRadius: "15px",
+    }}
+  >
+    <Typography
+      variant="h4"
+      className="sm:w-[60%] text-[24px] sm:text-[48px] font-[500]"
+    >
+      <span className="gradient">Polar AI</span> is the all-in-one solution for transforming your business operations
+    </Typography>
+    <Typography
+      variant="subtitle1"
+      className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]"
+    >
+      Whether you're driving sales, retaining customers, or making smarter decisions, our{" "}
+      <span className="gradient">
+      AI Sales Agent
+      </span>
+      , and <span className="gradient">AI Customer Service Agent</span> are here to help you scale effortlessly.<br />With{" "}
+      <span className="gradient">multi-language and multi-channel support</span> ,including {" "}
+      <span className="gradient">WhatsApp, email, and calls,</span> Polar ensures seamless and personalized connections with your customers—anytime, anywhere{" "}
+      {/* <span className="gradient">email automation</span> */}
+    </Typography>
+    <Stack direction="row" spacing={2} className="mt-6">
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://calendly.com/vidisha-gopolar/30min"
+        target="blank"
+      >
+        Book a Call
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="blank"
+      >
+        Polar for Real Estate
+      </Button>
+    </Stack>
+  </Stack>
+</Box>
+
 
         <Box className="p-8 rounded-md mx-auto text-center">
           <Typography
@@ -457,7 +474,7 @@ function App() {
             Want <span className="gradient">Polar </span>to Take Over?
           </h2>
           <h2 className="text-3xl mb-5 text-[20px] sm:text-[35px] font-[600] relative z-1">
-            Join the Waitlist Today!
+          Explore Polar AI potential for your business
           </h2>
           <Button
             variant="contained"
