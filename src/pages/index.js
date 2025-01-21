@@ -257,7 +257,7 @@ function App() {
       variant="subtitle1"
       className="mt-4 max-w-2xl mx-auto text-[14px] sm:text-[20px]"
     >
-      Whether you're driving sales, retaining customers, or making smarter decisions, our{" "}
+      Whether you are driving sales, retaining customers, or making smarter decisions, our{" "}
       <span className="gradient">
       AI Sales Agent
       </span>
