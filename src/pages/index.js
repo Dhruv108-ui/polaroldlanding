@@ -176,38 +176,65 @@ function App() {
             alignItems="center"
           >
             <Box flex={1}>
-              <Typography
-                variant="h3"
-                className="gradient text-[24px] sm:text-[48px] relative z-10"
-              >
-                Supercharge Your Sales
-              </Typography>
-              <Typography
-                variant="h3"
-                className="font-bold text-[#18181B] text-[24px] sm:text-[48px] relative z-10"
-              >
-                Retention, and <br /> Decision-Making with AI
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                className="mt-4 text-[14px] sm:text-[20px] relative z-10"
-              >
-                <span className="font-bold">Introducing Polar </span>
-                Your Agentic AI Infrastructure for WhatsApp, Email, and Call
-              </Typography>
-              {/**
-               * Original "Book a Call" button that opens normal modal 
-               * or you can link to Calendly as well
-               */}
-              <Button
-                variant="contained"
-                className="mt-6 button"
-                href="https://calendly.com/vidisha-gopolar/30min"
-                target="blank"
-              >
-                Book a Call
-              </Button>
-            </Box>
+  <Typography
+    variant="h3"
+    className="gradient text-[24px] sm:text-[48px] relative z-10"
+  >
+    Supercharge Your Sales
+  </Typography>
+  <Typography
+    variant="h3"
+    className="font-bold text-[#18181B] text-[24px] sm:text-[48px] relative z-10"
+  >
+    Retention, and <br /> Decision-Making with AI
+  </Typography>
+  <Typography
+    variant="subtitle1"
+    className="mt-4 text-[14px] sm:text-[20px] relative z-10"
+  >
+    <span className="font-bold">Introducing Polar </span>
+    Your Agentic AI Infrastructure for WhatsApp, Email, and Call
+  </Typography>
+  <Stack spacing={4} className="mt-6">
+    {/* First stack for "Book a Call" */}
+    {/* <Button
+      variant="contained"
+      className="button"
+      href="https://calendly.com/vidisha-gopolar/30min"
+      target="blank"
+    >
+      Book a Call
+    </Button> */}
+    {/* Second stack for two buttons in a horizontal line */}
+    <Stack direction="row" spacing={2}>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Real Estate
+      </Button>
+      <Button
+      variant="contained"
+      className="button"
+      href="https://calendly.com/vidisha-gopolar/30min"
+      target="blank"
+    >
+      Book a Call
+    </Button>
+    </Stack>
+  </Stack>
+</Box>
+
             <Box flex={1} sx={{ maxWidth: "100%", m: 2 }}>
               <span className="ms-5 font-bold text-[20px] gradient">
                 Request a Demo
@@ -267,14 +294,14 @@ function App() {
       {/* <span className="gradient">email automation</span> */}
     </Typography>
     <Stack direction="row" spacing={2} className="mt-6">
-      <Button
+      {/* <Button
         variant="contained"
         className="button"
         href="https://ecommerce.gopolar.io/"
         target="blank"
       >
         Polar for Ecommerce
-      </Button>
+      </Button> */}
       <Button
         variant="contained"
         className="button"
@@ -283,14 +310,14 @@ function App() {
       >
         Book a Call
       </Button>
-      <Button
+      {/* <Button
         variant="contained"
         className="button"
         href="https://realestate.gopolar.io/"
         target="blank"
       >
         Polar for Real Estate
-      </Button>
+      </Button> */}
     </Stack>
   </Stack>
 </Box>
@@ -371,15 +398,42 @@ function App() {
             component="a"
             display="flex"
             justifyContent="center "
-            href="https://wa.link/d48oih"
+            // href="https://wa.link/d48oih"
             target="blank"
           >
-            <Box
+            {/* <Box
               component="img"
               src="Icons/wp.png"
               alt="AI Agent"
               className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer"
-            />
+            /> */}
+            
+            <Stack direction="row" spacing={2} className="mt-6">
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://calendly.com/vidisha-gopolar/30min"
+        target="blank"
+      >
+        Book a Call
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="blank"
+      >
+        Polar for Real Estate
+      </Button>
+    </Stack>
           </Box>
         </section>
 
