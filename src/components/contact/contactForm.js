@@ -6,25 +6,28 @@ import { MuiTelInput } from "mui-tel-input";
 import { database } from "@/assets/db/config";
 import { addDoc, collection } from "firebase/firestore";
 
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+import { useRouter } from "next/router";
 
 const ContactForm = () => {
-  /**
-   * State manager for snackbar
-   */
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarText, setSnackbarText] = useState("Detials saved");
+  const router = useRouter(); // Router for navigation
 
-  /**
-   * Snackbar Handler
-   */
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarText, setSnackbarText] = useState("Details saved");
+  const [value, setValue] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
+  const [emailError, setEmailError] = useState(false);
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Za-z]{2,}$/i;
+
   const handleSnackbarClick = () => {
     setSnackbarOpen(true);
   };
 
-  /**
-   * Snackbar Handler
-   */
   const handleSnackbarClose = (reason) => {
     if (reason === "clickaway") {
       return;
@@ -32,62 +35,21 @@ const ContactForm = () => {
     setSnackbarOpen(false);
   };
 
-  /**
-   * Country selector for country input field
-   */
-  const [value, setValue] = useState("");
-
-  /**
-   * To change the selcted country to user specific country
-   * @param {*} newValue: Expects a country value
-   */
   const handlePhoneChange = (newValue, info) => {
     setValue(newValue);
     setFormValues({ ...formValues, mobile: info.numberValue });
   };
 
-  /**
-   * Form data
-   */
-  const formData = {
-    name: "",
-    email: "",
-    mobile: "",
-    message: "",
-  };
-
-  /**
-   * State manager from formData
-   */
-  const [formValues, setFormValues] = useState(formData);
-
-  /**
-   * Variables for Email validation
-   * State manager
-   * Email regex
-   */
-  const [emailError, setEmailError] = useState(false);
-  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Za-z]{2,}$/i;
-
-  /**
-   * To populate the formData
-   * @param e: React change event
-   */
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "email") {
       setEmailError(!emailRegex.test(value));
     }
     setFormValues({ ...formValues, [name]: value });
   };
 
-  /**
-   * To handle form submission
-   * @param {*} e: React form event
-   */
   const handleFormSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setSnackbarText("Details saved");
 
     if (emailError === true) {
@@ -95,27 +57,36 @@ const ContactForm = () => {
       handleSnackbarClick();
       return;
     }
-    
+
     try {
       const formCollection = collection(database, "polarContactFormData");
-      const newData = await addDoc(formCollection, formValues);
-      sendEmail(formValues)
+      await addDoc(formCollection, formValues);
+      sendEmail(formValues);
       handleSnackbarClick();
-      setFormValues(formData);
-      setValue('')
-      setEmailError(false)
+
+      setFormValues({
+        name: "",
+        email: "",
+        mobile: "",
+        message: "",
+      });
+      setValue("");
+      setEmailError(false);
+
+      // Navigate to the Thank You page
+      router.push("/thank-you");
+      setTimeout(() => {
+        // Redirect to the homepage after 5 seconds
+        router.push("/");
+      }, 5000);
     } catch (error) {
       console.log(error);
     }
   };
 
-  /**
-   * To send email
-   * @param data: form data 
-   */
   const sendEmail = async (data) => {
     const templateParams = {
-      to_name: 'Jatin',
+      to_name: "Jatin",
       from_name: data.name,
       phone: data.mobile,
       email: data.email,
@@ -127,19 +98,17 @@ const ContactForm = () => {
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         templateParams,
         {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-        },
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        }
       );
-    } 
-    catch (err) {
+    } catch (err) {
       if (err instanceof EmailJSResponseStatus) {
-        console.log('EMAILJS FAILED...', err);
+        console.log("EMAILJS FAILED...", err);
         return;
       }
-      console.log("Error ", err)
+      console.log("Error ", err);
     }
-  }
-
+  };
 
   return (
     <form onSubmit={handleFormSubmit}>
