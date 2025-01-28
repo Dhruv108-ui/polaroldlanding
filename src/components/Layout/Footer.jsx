@@ -38,11 +38,11 @@ const Footer = ({ openContact }) => {
                             <a href="#" className="hover:underline">Blog</a>
                         </div>
                         <div className="flex flex-col space-y-2">
-                            <h3 className="font-bold sm:mb-2">Contact</h3>
+                            {/* <h3 className="font-bold sm:mb-2">Contact</h3>
                             <div className="flex items-center space-x-2">
                                 <span><CallIcon /></span>
                                 <a href="tel:+919911924895" className="hover:underline">+91 9911924895</a>
-                            </div>
+                            </div> */}
                             <div className="flex items-center space-x-2">
                                 <span><EmailIcon /></span>
                                 <a href="mailto:hello@gobolar.io" className="hover:underline">hello@gopolar.io</a>
