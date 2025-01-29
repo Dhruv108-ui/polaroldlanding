@@ -175,7 +175,7 @@ function App() {
             spacing={4}
             alignItems="center"
           >
-            <Box flex={1}>
+            <Box flex={1} className="ml-4 mr-4">
   <Typography
     variant="h3"
     className="gradient text-[24px] sm:text-[48px] relative z-10"
