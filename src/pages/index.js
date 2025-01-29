@@ -169,7 +169,7 @@ function App() {
           className="w-full"
           sx={{ position: "absolute", height: "72svh", zIndex: "0" }}
         />
-        <Box className="bg-white text-black py-4 sm:py-5 px-5 sm:px-24 mt-0 sm:mt-12 h-[72vh]">
+        <Box className="bg-white text-black py-4 sm:py-5 px-5 sm:px-24 mt-0 sm:mt-12 md:h-[72vh]">
           <Stack
             direction={{ xs: "column", md: "row" }}
             spacing={4}
