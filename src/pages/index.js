@@ -73,7 +73,7 @@ function App() {
   // --- Sticky Modal Handlers (scroll-based) ---
   const handleCloseScrollModal = () => setScrollModalOpen(false);
 
-  const isMobile = useMediaQuery("(max-width:500px)");
+  const isMobile = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -252,15 +252,18 @@ function App() {
       >
         Polar for Real Estate
       </Button>
-      <Button
-        variant="contained"
-        className="button"
-        href="https://calendly.com/vidisha-gopolar/30min"
-        target="_blank"
-      >
-        Book a Call
-      </Button>
-    </Stack>
+      {!isMobile && (
+        <Button
+          variant="contained"
+          className="button"
+          href="https://calendly.com/vidisha-gopolar/30min"
+          target="_blank"
+        >
+          Book a Call
+        </Button>
+      )}
+</Stack>
+
     
   </Stack>
 </Box>
