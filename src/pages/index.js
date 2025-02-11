@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import Link from "next/link";
 import Head from "next/head";
 import ContactModal from "@/components/Modal";
@@ -71,6 +72,8 @@ function App() {
 
   // --- Sticky Modal Handlers (scroll-based) ---
   const handleCloseScrollModal = () => setScrollModalOpen(false);
+
+  const isMobile = useMediaQuery("(max-width:500px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -206,7 +209,7 @@ function App() {
       Book a Call
     </Button> */}
     {/* Second stack for two buttons in a horizontal line */}
-    <Stack direction="row" spacing={2}>
+    {/* <Stack direction="row" spacing={2}>
       <Button
         variant="contained"
         className="button"
@@ -231,7 +234,34 @@ function App() {
     >
       Book a Call
     </Button>
+    </Stack> */}
+    <Stack direction={isMobile ? "column" : "row"} spacing={2}>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Real Estate
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://calendly.com/vidisha-gopolar/30min"
+        target="_blank"
+      >
+        Book a Call
+      </Button>
     </Stack>
+    
   </Stack>
 </Box>
 
