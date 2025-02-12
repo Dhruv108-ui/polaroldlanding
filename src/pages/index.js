@@ -235,7 +235,7 @@ function App() {
       Book a Call
     </Button>
     </Stack> */}
-    <Stack direction={isMobile ? "column" : "row"} spacing={2}>
+    <Stack direction={isMobile ? "column" : "row"} spacing={2} padding={2}>
       <Button
         variant="contained"
         className="button"
@@ -262,7 +262,7 @@ function App() {
           Book a Call
         </Button>
       )}
-</Stack>
+    </Stack>
 
     
   </Stack>
@@ -441,7 +441,7 @@ function App() {
               className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer"
             /> */}
             
-            <Stack direction="row" spacing={2} className="mt-6">
+            {/* <Stack direction="row" spacing={2} className="mt-6">
       <Button
         variant="contained"
         className="button"
@@ -466,6 +466,34 @@ function App() {
       >
         Polar for Real Estate
       </Button>
+    </Stack> */}
+    <Stack direction={isMobile ? "column" : "row"} spacing={2} padding={2}className="mt-6">
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Real Estate
+      </Button>
+      {!isMobile && (
+        <Button
+          variant="contained"
+          className="button"
+          href="https://calendly.com/vidisha-gopolar/30min"
+          target="_blank"
+        >
+          Book a Call
+        </Button>
+      )}
     </Stack>
           </Box>
         </section>
