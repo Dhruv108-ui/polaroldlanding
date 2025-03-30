@@ -55,7 +55,7 @@ const Header = ({ openContact }) => {
                   fontFamily: "Plus Jakarta Sans, sans-serif",
                   background: "linear-gradient(to right, #211AEB, #7C36FE)",
                 }}
-                href="https://calendly.com/vidisha-gopolar/30min"
+                href="https://calendly.com/jatin-gopolar/30min"
                 target="blank"
               >
                 Book a Call
@@ -123,7 +123,7 @@ const Header = ({ openContact }) => {
                         fontFamily: "Plus Jakarta Sans, sans-serif",
                         background: "linear-gradient(to right, #211AEB, #7C36FE)",
                       }}
-                      href="https://calendly.com/vidisha-gopolar/30min"
+                      href="https://calendly.com/jatin-gopolar/30min"
                       target="blank"
                     >
                       Book a Call

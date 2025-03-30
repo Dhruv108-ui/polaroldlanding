@@ -151,7 +151,7 @@ function App() {
         <Button
           variant="contained"
           className="button"
-          href="https://calendly.com/vidisha-gopolar/30min"
+          href="https://calendly.com/jatin-gopolar/30min"
           target="_blank"
         >
           Book a Call
@@ -200,7 +200,7 @@ function App() {
     {/* <Button
       variant="contained"
       className="button"
-      href="https://calendly.com/vidisha-gopolar/30min"
+      href="https://calendly.com/jatin-gopolar/30min"
       target="blank"
     >
       Book a Call
@@ -226,7 +226,7 @@ function App() {
       <Button
       variant="contained"
       className="button"
-      href="https://calendly.com/vidisha-gopolar/30min"
+      href="https://calendly.com/jatin-gopolar/30min"
       target="blank"
     >
       Book a Call
@@ -305,7 +305,7 @@ function App() {
       <Button
         variant="contained"
         className="button"
-        href="https://calendly.com/vidisha-gopolar/30min"
+        href="https://calendly.com/jatin-gopolar/30min"
         target="blank"
       >
         Book a Call
@@ -420,7 +420,7 @@ function App() {
       <Button
         variant="contained"
         className="button"
-        href="https://calendly.com/vidisha-gopolar/30min"
+        href="https://calendly.com/jatin-gopolar/30min"
         target="blank"
       >
         Book a Call
@@ -533,7 +533,7 @@ function App() {
           <Button
             variant="contained"
             className="button"
-            href="https://calendly.com/vidisha-gopolar/30min"
+            href="https://calendly.com/jatin-gopolar/30min"
             target="blank"
           >
             Book a Call

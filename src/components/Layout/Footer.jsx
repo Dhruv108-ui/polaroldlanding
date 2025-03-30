@@ -18,7 +18,7 @@ const Footer = ({ openContact }) => {
                         </div>
                         <div>
                             <h2 className="text-lg">Ready to get started?</h2>
-                            <Button className="mt-6 bg-white text-black py-2 px-8 rounded-md hover:bg-gray-200 font-[500]" href='https://calendly.com/vidisha-gopolar/30min' target='blank' sx={{ textTransform: "none" }}>
+                            <Button className="mt-6 bg-white text-black py-2 px-8 rounded-md hover:bg-gray-200 font-[500]" href='https://calendly.com/jatin-gopolar/30min' target='blank' sx={{ textTransform: "none" }}>
                                 Book a call
                             </Button>
                         </div>
