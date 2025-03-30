@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import Link from "next/link";
 import Head from "next/head";
 import ContactModal from "@/components/Modal";
@@ -71,6 +72,8 @@ function App() {
 
   // --- Sticky Modal Handlers (scroll-based) ---
   const handleCloseScrollModal = () => setScrollModalOpen(false);
+
+  const isMobile = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -169,13 +172,13 @@ function App() {
           className="w-full"
           sx={{ position: "absolute", height: "72svh", zIndex: "0" }}
         />
-        <Box className="bg-white text-black py-4 sm:py-5 px-5 sm:px-24 mt-0 sm:mt-12 h-[72vh]">
+        <Box className="bg-white text-black py-4 sm:py-5 px-5 sm:px-24 mt-0 sm:mt-12 md:h-[72vh]">
           <Stack
             direction={{ xs: "column", md: "row" }}
             spacing={4}
             alignItems="center"
           >
-            <Box flex={1}>
+            <Box flex={1} className="w-[95%]">
   <Typography
     variant="h3"
     className="gradient text-[24px] sm:text-[48px] relative z-10"
@@ -206,7 +209,7 @@ function App() {
       Book a Call
     </Button> */}
     {/* Second stack for two buttons in a horizontal line */}
-    <Stack direction="row" spacing={2}>
+    {/* <Stack direction="row" spacing={2}>
       <Button
         variant="contained"
         className="button"
@@ -231,7 +234,37 @@ function App() {
     >
       Book a Call
     </Button>
+    </Stack> */}
+    <Stack direction={isMobile ? "column" : "row"} spacing={2} padding={2}>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Real Estate
+      </Button>
+      {!isMobile && (
+        <Button
+          variant="contained"
+          className="button"
+          href="https://calendly.com/vidisha-gopolar/30min"
+          target="_blank"
+        >
+          Book a Call
+        </Button>
+      )}
     </Stack>
+
+    
   </Stack>
 </Box>
 
@@ -408,7 +441,7 @@ function App() {
               className="w-[50%] sm:w-full max-w-[15rem] mt-[20px] relative z-1 cursor-pointer"
             /> */}
             
-            <Stack direction="row" spacing={2} className="mt-6">
+            {/* <Stack direction="row" spacing={2} className="mt-6">
       <Button
         variant="contained"
         className="button"
@@ -433,6 +466,34 @@ function App() {
       >
         Polar for Real Estate
       </Button>
+    </Stack> */}
+    <Stack direction={isMobile ? "column" : "row"} spacing={2} padding={2}className="mt-6">
+      <Button
+        variant="contained"
+        className="button"
+        href="https://ecommerce.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Ecommerce
+      </Button>
+      <Button
+        variant="contained"
+        className="button"
+        href="https://realestate.gopolar.io/"
+        target="_blank"
+      >
+        Polar for Real Estate
+      </Button>
+      {!isMobile && (
+        <Button
+          variant="contained"
+          className="button"
+          href="https://calendly.com/vidisha-gopolar/30min"
+          target="_blank"
+        >
+          Book a Call
+        </Button>
+      )}
     </Stack>
           </Box>
         </section>
